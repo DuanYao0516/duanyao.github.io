@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/10/08/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hexo 博客教程</title>
+    <url>/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<p>本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。</p>
+<h1 id="主机环境配置"><a href="#主机环境配置" class="headerlink" title="主机环境配置"></a>主机环境配置</h1><ol>
+<li>本机安装 <code>Nodejs</code></li>
+<li>本机安装 <code>npm</code>, 一般不建议使用  <code>cnpm</code></li>
+<li>本机安装 <code>git</code></li>
+<li>使用 <code>npm</code> 安装 <code>hexo</code>, <code>npm install -g hexo-cli</code>, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。</li>
+</ol>
+<h1 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h1><ol>
+<li><code>hexo clean</code></li>
+<li><code>hexo g</code></li>
+<li><code>hexo s</code></li>
+<li>浏览器访问 <code>localhost:4000</code></li>
+</ol>
+<h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><p>本文使用 Next 主题，如需更多，请前往 Hexo Themes。</p>
+<ol>
+<li>创建博客存储用文件夹，如 <code>D:\myblog</code></li>
+<li>使用管理员权限打开命令行，建议使用 windows 的 <code>cmd.exe</code>.</li>
+<li>文件夹路径内执行 <code>hexo init</code></li>
+<li>执行 <code>npm install hexo-theme-next</code>, 此时将 <code>next</code> 主题安装在 <code>myblog\node_moudles\hexo-theme-next</code>  中</li>
+<li>注意区别主题配置文件与站点配置文件</li>
+<li>主题美化与站点信息配置不属于本博客详述内容，个性化内容请查找互联网文档</li>
+<li>重要！Hexo 配置的静态博客实际文件在本地，所以建议将 <code>myblog</code> 文件夹用一个新的 <code>Github</code> 仓库保存，以免丢失时方便找回，或防止在 <code>Next</code> 更新时丢失配置好的主题。</li>
+</ol>
+<h1 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h1><ol>
+<li>Github 新建仓库，要求与用户名完全同名。如：<code>&lt;yonghuming&gt;.github.io</code></li>
+<li>本机安装 <code>npm install hexo-deployer-git --save</code></li>
+<li>修改站点配置文件 <code>_config.yml</code>，注意不是主题配置文件</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">你的仓库路径</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>编写与发布流程</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new &lt;filename&gt; <span class="comment"># 不包含后缀</span></span><br><span class="line"><span class="comment"># 使用编辑器(\_post文件夹)或vim编写后保存</span></span><br><span class="line">hexo clean <span class="comment"># 可选的</span></span><br><span class="line">hexo g <span class="comment"># 生成静态文章</span></span><br><span class="line">hexo s <span class="comment"># 启动本地站点测试</span></span><br><span class="line">hexo d <span class="comment"># 部署</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>环境配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hexo主题个性化</title>
+    <url>/2024/10/08/Hexo%E4%B8%BB%E9%A2%98%E4%B8%AA%E6%80%A7%E5%8C%96/</url>
+    <content><![CDATA[<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><ul>
+<li><p><a href="https://theme-next.simpleyyt.com/getting-started.html#select-language">开始使用 - NexT 使用文档 (simpleyyt.com)</a></p>
+</li>
+<li><p><a href="https://sspai.com/post/85116">少数派</a></p>
+</li>
+<li><p><a href="https://github.com/next-theme/hexo-word-counter">GitHub - next-theme&#x2F;hexo-word-counter： ⏱️ 用 Rust 编写的 Hexo 文章的字数和阅读时间</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/LyShark/articles/16518392.html">https://www.cnblogs.com/LyShark/articles/16518392.html</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/cscshi/p/15196102.html">https://www.cnblogs.com/cscshi/p/15196102.html</a></p>
+</li>
+<li><p><a href="https://www.cnblogs.com/cscshi/p/15196100.html">Hexo-NexT 添加图片 - 锦瑟，无端 - 博客园 (cnblogs.com)</a></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>springboot3开发流程.md</title>
+    <url>/2024/10/08/springboot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="Spring-Boot-主要开发流程"><a href="#Spring-Boot-主要开发流程" class="headerlink" title="Spring Boot 主要开发流程"></a>Spring Boot 主要开发流程</h2><ol>
+<li>创建实体类以及数据库中的表(sql&#x2F;init.sql)</li>
+<li>新增或修改数据库映射类，类似 Django 的模型类<ul>
+<li>在 <code>main/此处省略/mapper/*Mapper.java</code> 中写好接口</li>
+<li>在 <code>resources/mapper/*Mapper.xml</code> 中根据各接口编写查询语句</li>
+<li>注意接口和查询语句必须一一对应（不一定按顺序）</li>
+</ul>
+</li>
+<li>新增或修改服务类<ul>
+<li>在 <code>main/此处省略/service/*Service.java</code> 中写好接口</li>
+<li>在 <code>main/此处省略/service/impl/*ServiceImpl.java</code> 中实现类</li>
+</ul>
+</li>
+<li>新增或修改控制器，类似 Django 的视图函数</li>
+<li>完成前端模板（采用 thymeleaf 模板引擎）</li>
+</ol>
+]]></content>
+  </entry>
+</search>
