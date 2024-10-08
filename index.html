@@ -119,9 +119,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
       </div>
   </nav>
 </div>
@@ -137,6 +141,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="post-title-link" itemprop="url">Hexo 博客教程</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-10-08 16:19:48 / Modified: 16:39:59" itemprop="dateCreated datePublished" datetime="2024-10-08T16:19:48+08:00">2024-10-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。</p>
+<h1 id="主机环境配置"><a href="#主机环境配置" class="headerlink" title="主机环境配置"></a>主机环境配置</h1><ol>
+<li>本机安装 <code>Nodejs</code></li>
+<li>本机安装 <code>npm</code>, 一般不建议使用  <code>cnpm</code></li>
+<li>本机安装 <code>git</code></li>
+<li>使用 <code>npm</code> 安装 <code>hexo</code>, <code>npm install -g hexo-cli</code>, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。</li>
+</ol>
+<h1 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h1><ol>
+<li><code>hexo clean</code></li>
+<li><code>hexo g</code></li>
+<li><code>hexo s</code></li>
+<li>浏览器访问 <code>localhost:4000</code></li>
+</ol>
+<h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><p>本文使用 Next 主题，如需更多，请前往 Hexo Themes。</p>
+<ol>
+<li>创建博客存储用文件夹，如 <code>D:\myblog</code></li>
+<li>使用管理员权限打开命令行，建议使用 windows 的 <code>cmd.exe</code>.</li>
+<li>文件夹路径内执行 <code>hexo init</code></li>
+<li>执行 <code>npm install hexo-theme-next</code>, 此时将 <code>next</code> 主题安装在 <code>myblog\node_moudles\hexo-theme-next</code>  中</li>
+<li>注意区别主题配置文件与站点配置文件</li>
+<li>主题美化与站点信息配置不属于本博客详述内容，个性化内容请查找互联网文档</li>
+<li>重要！Hexo 配置的静态博客实际文件在本地，所以建议将 <code>myblog</code> 文件夹用一个新的 <code>Github</code> 仓库保存，以免丢失时方便找回，或防止在 <code>Next</code> 更新时丢失配置好的主题。</li>
+</ol>
+<h1 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h1><ol>
+<li>Github 新建仓库，要求与用户名完全同名。如：<code>&lt;yonghuming&gt;.github.io</code></li>
+<li>本机安装 <code>npm install hexo-deployer-git --save</code></li>
+<li>修改站点配置文件 <code>_config.yml</code>，注意不是主题配置文件</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">你的仓库路径</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>编写与发布流程</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;filename&gt; <span class="comment"># 不包含后缀</span></span><br><span class="line"><span class="comment"># 使用编辑器(\_post文件夹)或vim编写后保存</span></span><br><span class="line">hexo clean <span class="comment"># 可选的</span></span><br><span class="line">hexo g <span class="comment"># 生成静态文章</span></span><br><span class="line">hexo s <span class="comment"># 启动本地站点测试</span></span><br><span class="line">hexo d <span class="comment"># 部署</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 

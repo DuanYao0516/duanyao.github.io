@@ -19,27 +19,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Spring Boot 主要开发流程 创建实体类以及数据库中的表(sql&#x2F;init.sql) 新增或修改数据库映射类，类似 Django 的模型类 在 main&#x2F;此处省略&#x2F;mapper&#x2F;*Mapper.java 中写好接口 在 resources&#x2F;mapper&#x2F;*Mapper.xml 中根据各接口编写查询语句 注意接口和查询语句必须一一对应（不一定按顺序）   新增或修改服务类 在 ma">
+    <meta name="description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置 本机安装 Nodejs 本机安装 npm, 一般不建议使用  cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试 hexo clean hexo g">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springboot3开发流程.md">
-<meta property="og:url" content="http://example.com/2024/10/08/springboot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:title" content="Hexo 博客教程">
+<meta property="og:url" content="http://example.com/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Duan Yao&#39;s Blog">
-<meta property="og:description" content="Spring Boot 主要开发流程 创建实体类以及数据库中的表(sql&#x2F;init.sql) 新增或修改数据库映射类，类似 Django 的模型类 在 main&#x2F;此处省略&#x2F;mapper&#x2F;*Mapper.java 中写好接口 在 resources&#x2F;mapper&#x2F;*Mapper.xml 中根据各接口编写查询语句 注意接口和查询语句必须一一对应（不一定按顺序）   新增或修改服务类 在 ma">
+<meta property="og:description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置 本机安装 Nodejs 本机安装 npm, 一般不建议使用  cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试 hexo clean hexo g">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-10-08T08:15:16.000Z">
-<meta property="article:modified_time" content="2024-10-08T08:15:44.062Z">
+<meta property="article:published_time" content="2024-10-08T08:19:48.000Z">
+<meta property="article:modified_time" content="2024-10-08T08:39:59.688Z">
 <meta property="article:author" content="Duan Yao">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="环境配置">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2024/10/08/springboot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+<link rel="canonical" href="http://example.com/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/10/08/springboot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/","path":"2024/10/08/springboot3开发流程/","title":"springboot3开发流程.md"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/","path":"2024/10/08/Hexo博客教程/","title":"Hexo 博客教程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>springboot3开发流程.md | Duan Yao's Blog</title>
+<title>Hexo 博客教程 | Duan Yao's Blog</title>
   
 
 
@@ -111,7 +113,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-%E4%B8%BB%E8%A6%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">Spring Boot 主要开发流程</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">主机环境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">本地测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github-Pages"><span class="nav-number">4.</span> <span class="nav-text">Github Pages</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -156,7 +158,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/08/springboot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -169,12 +171,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="springboot3开发流程.md | Duan Yao's Blog">
+      <meta itemprop="name" content="Hexo 博客教程 | Duan Yao's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          springboot3开发流程.md
+          Hexo 博客教程
         </h1>
 
         <div class="post-meta-container">
@@ -186,7 +188,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-10-08 16:15:16 / Modified: 16:15:44" itemprop="dateCreated datePublished" datetime="2024-10-08T16:15:16+08:00">2024-10-08</time>
+      <time title="Created: 2024-10-08 16:19:48 / Modified: 16:39:59" itemprop="dateCreated datePublished" datetime="2024-10-08T16:19:48+08:00">2024-10-08</time>
     </span>
 
   
@@ -198,22 +200,43 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="Spring-Boot-主要开发流程"><a href="#Spring-Boot-主要开发流程" class="headerlink" title="Spring Boot 主要开发流程"></a>Spring Boot 主要开发流程</h2><ol>
-<li>创建实体类以及数据库中的表(sql&#x2F;init.sql)</li>
-<li>新增或修改数据库映射类，类似 Django 的模型类<ul>
-<li>在 <code>main/此处省略/mapper/*Mapper.java</code> 中写好接口</li>
-<li>在 <code>resources/mapper/*Mapper.xml</code> 中根据各接口编写查询语句</li>
-<li>注意接口和查询语句必须一一对应（不一定按顺序）</li>
-</ul>
-</li>
-<li>新增或修改服务类<ul>
-<li>在 <code>main/此处省略/service/*Service.java</code> 中写好接口</li>
-<li>在 <code>main/此处省略/service/impl/*ServiceImpl.java</code> 中实现类</li>
-</ul>
-</li>
-<li>新增或修改控制器，类似 Django 的视图函数</li>
-<li>完成前端模板（采用 thymeleaf 模板引擎）</li>
+    <div class="post-body" itemprop="articleBody"><p>本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。</p>
+<h1 id="主机环境配置"><a href="#主机环境配置" class="headerlink" title="主机环境配置"></a>主机环境配置</h1><ol>
+<li>本机安装 <code>Nodejs</code></li>
+<li>本机安装 <code>npm</code>, 一般不建议使用  <code>cnpm</code></li>
+<li>本机安装 <code>git</code></li>
+<li>使用 <code>npm</code> 安装 <code>hexo</code>, <code>npm install -g hexo-cli</code>, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。</li>
 </ol>
+<h1 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h1><ol>
+<li><code>hexo clean</code></li>
+<li><code>hexo g</code></li>
+<li><code>hexo s</code></li>
+<li>浏览器访问 <code>localhost:4000</code></li>
+</ol>
+<h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><p>本文使用 Next 主题，如需更多，请前往 Hexo Themes。</p>
+<ol>
+<li>创建博客存储用文件夹，如 <code>D:\myblog</code></li>
+<li>使用管理员权限打开命令行，建议使用 windows 的 <code>cmd.exe</code>.</li>
+<li>文件夹路径内执行 <code>hexo init</code></li>
+<li>执行 <code>npm install hexo-theme-next</code>, 此时将 <code>next</code> 主题安装在 <code>myblog\node_moudles\hexo-theme-next</code>  中</li>
+<li>注意区别主题配置文件与站点配置文件</li>
+<li>主题美化与站点信息配置不属于本博客详述内容，个性化内容请查找互联网文档</li>
+<li>重要！Hexo 配置的静态博客实际文件在本地，所以建议将 <code>myblog</code> 文件夹用一个新的 <code>Github</code> 仓库保存，以免丢失时方便找回，或防止在 <code>Next</code> 更新时丢失配置好的主题。</li>
+</ol>
+<h1 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h1><ol>
+<li>Github 新建仓库，要求与用户名完全同名。如：<code>&lt;yonghuming&gt;.github.io</code></li>
+<li>本机安装 <code>npm install hexo-deployer-git --save</code></li>
+<li>修改站点配置文件 <code>_config.yml</code>，注意不是主题配置文件</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">你的仓库路径</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>编写与发布流程</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;filename&gt; <span class="comment"># 不包含后缀</span></span><br><span class="line"><span class="comment"># 使用编辑器(\_post文件夹)或vim编写后保存</span></span><br><span class="line">hexo clean <span class="comment"># 可选的</span></span><br><span class="line">hexo g <span class="comment"># 生成静态文章</span></span><br><span class="line">hexo s <span class="comment"># 启动本地站点测试</span></span><br><span class="line">hexo d <span class="comment"># 部署</span></span><br></pre></td></tr></table></figure>
+
+
+
 
     </div>
 
@@ -222,19 +245,20 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag"># 笔记</a>
+              <a href="/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="tag"># 环境配置</a>
+          </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/10/08/hello-world/" rel="prev" title="Hello World">
-                  <i class="fa fa-angle-left"></i> Hello World
+                <a href="/2024/10/08/springboot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" rel="prev" title="springboot3开发流程.md">
+                  <i class="fa fa-angle-left"></i> springboot3开发流程.md
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" rel="next" title="Hexo 博客教程">
-                  Hexo 博客教程 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
