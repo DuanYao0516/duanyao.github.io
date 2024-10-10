@@ -20,12 +20,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置 本机安装 Nodejs 本机安装 npm, 一般不建议使用  cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试 hexo clean hexo g">
+    <meta name="description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置  本机安装 Nodejs 本机安装 npm, 一般不建议使用 cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试  hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo 博客教程">
 <meta property="og:url" content="http://example.com/2024/10/08/Hexo%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Duan Yao&#39;s Blog">
-<meta property="og:description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置 本机安装 Nodejs 本机安装 npm, 一般不建议使用  cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试 hexo clean hexo g">
+<meta property="og:description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置  本机安装 Nodejs 本机安装 npm, 一般不建议使用 cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试  hexo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-08T08:19:48.000Z">
 <meta property="article:modified_time" content="2024-10-08T09:19:39.799Z">
@@ -142,7 +142,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">主机环境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">本地测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Github-Pages"><span class="nav-number">4.</span> <span class="nav-text">Github Pages</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">主机环境配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">本地测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">主题配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#github-pages"><span class="nav-number">4.</span> <span class="nav-text">Github Pages</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -157,18 +157,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -287,42 +287,51 @@
     
     
     <div class="post-body" itemprop="articleBody"><p>本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。</p>
-<h1 id="主机环境配置"><a href="#主机环境配置" class="headerlink" title="主机环境配置"></a>主机环境配置</h1><ol>
+<h1 id="主机环境配置">主机环境配置</h1>
+<ol type="1">
 <li>本机安装 <code>Nodejs</code></li>
-<li>本机安装 <code>npm</code>, 一般不建议使用  <code>cnpm</code></li>
+<li>本机安装 <code>npm</code>, 一般不建议使用 <code>cnpm</code></li>
 <li>本机安装 <code>git</code></li>
-<li>使用 <code>npm</code> 安装 <code>hexo</code>, <code>npm install -g hexo-cli</code>, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。</li>
+<li>使用 <code>npm</code> 安装 <code>hexo</code>,
+<code>npm install -g hexo-cli</code>,
+如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。</li>
 </ol>
-<h1 id="本地测试"><a href="#本地测试" class="headerlink" title="本地测试"></a>本地测试</h1><ol>
+<h1 id="本地测试">本地测试</h1>
+<ol type="1">
 <li><code>hexo clean</code></li>
 <li><code>hexo g</code></li>
 <li><code>hexo s</code></li>
 <li>浏览器访问 <code>localhost:4000</code></li>
 </ol>
-<h1 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h1><p>本文使用 Next 主题，如需更多，请前往 Hexo Themes。</p>
-<ol>
+<h1 id="主题配置">主题配置</h1>
+<p>本文使用 Next 主题，如需更多，请前往 Hexo Themes。</p>
+<ol type="1">
 <li>创建博客存储用文件夹，如 <code>D:\myblog</code></li>
-<li>使用管理员权限打开命令行，建议使用 windows 的 <code>cmd.exe</code>.</li>
+<li>使用管理员权限打开命令行，建议使用 windows 的
+<code>cmd.exe</code>.</li>
 <li>文件夹路径内执行 <code>hexo init</code></li>
-<li>执行 <code>npm install hexo-theme-next</code>, 此时将 <code>next</code> 主题安装在 <code>myblog\node_moudles\hexo-theme-next</code>  中</li>
+<li>执行 <code>npm install hexo-theme-next</code>, 此时将
+<code>next</code> 主题安装在
+<code>myblog\node_moudles\hexo-theme-next</code> 中</li>
 <li>注意区别主题配置文件与站点配置文件</li>
 <li>主题美化与站点信息配置不属于本博客详述内容，个性化内容请查找互联网文档</li>
-<li>重要！Hexo 配置的静态博客实际文件在本地，所以建议将 <code>myblog</code> 文件夹用一个新的 <code>Github</code> 仓库保存，以免丢失时方便找回，或防止在 <code>Next</code> 更新时丢失配置好的主题。</li>
+<li>重要！Hexo 配置的静态博客实际文件在本地，所以建议将
+<code>myblog</code> 文件夹用一个新的 <code>Github</code>
+仓库保存，以免丢失时方便找回，或防止在 <code>Next</code>
+更新时丢失配置好的主题。</li>
 </ol>
-<h1 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h1><ol>
-<li>Github 新建仓库，要求与用户名完全同名。如：<code>&lt;yonghuming&gt;.github.io</code></li>
+<h1 id="github-pages">Github Pages</h1>
+<ol type="1">
+<li>Github
+新建仓库，要求与用户名完全同名。如：<code>&lt;yonghuming&gt;.github.io</code></li>
 <li>本机安装 <code>npm install hexo-deployer-git --save</code></li>
 <li>修改站点配置文件 <code>_config.yml</code>，注意不是主题配置文件</li>
 </ol>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">你的仓库路径</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
+<ol start="4" type="1">
 <li>编写与发布流程</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;filename&gt; <span class="comment"># 不包含后缀</span></span><br><span class="line"><span class="comment"># 使用编辑器(\_post文件夹)或vim编写后保存</span></span><br><span class="line">hexo clean <span class="comment"># 可选的</span></span><br><span class="line">hexo g <span class="comment"># 生成静态文章</span></span><br><span class="line">hexo s <span class="comment"># 启动本地站点测试</span></span><br><span class="line">hexo d <span class="comment"># 部署</span></span><br></pre></td></tr></table></figure>
-
-
-
 
     </div>
 
@@ -384,7 +393,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3 分钟</span>
+    <span title="站点阅读时长">5 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -442,6 +451,12 @@
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","single_dollars":true,"cjk_width":0.9,"normal_width":0.6,"append_css":true,"every_page":false,"packages":null,"extension_options":{},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
