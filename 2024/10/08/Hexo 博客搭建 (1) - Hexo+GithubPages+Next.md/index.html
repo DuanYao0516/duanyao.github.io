@@ -20,15 +20,15 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置  本机安装 Nodejs 本机安装 npm, 一般不建议使用 cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试  hexo">
+    <meta name="description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。以及备份 Github Pages 相关配置与文档。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo 博客教程">
+<meta property="og:title" content="Hexo 博客搭建 (1) - Hexo+GithubPages+Next">
 <meta property="og:url" content="http://example.com/2024/10/08/Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%20(1)%20-%20Hexo+GithubPages+Next.md/index.html">
 <meta property="og:site_name" content="Duan Yao&#39;s Blog">
-<meta property="og:description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。 主机环境配置  本机安装 Nodejs 本机安装 npm, 一般不建议使用 cnpm 本机安装 git 使用 npm 安装 hexo, npm install -g hexo-cli, 如出现下载缓慢，建议使用镜像站，因镜像站变动较多，这里不列出。  本地测试  hexo">
+<meta property="og:description" content="本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。以及备份 Github Pages 相关配置与文档。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-10-08T08:19:48.000Z">
-<meta property="article:modified_time" content="2024-10-11T06:55:34.716Z">
+<meta property="article:modified_time" content="2024-10-11T08:30:18.598Z">
 <meta property="article:author" content="Duan Yao">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="环境配置">
@@ -39,10 +39,10 @@
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/08/Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%20(1)%20-%20Hexo+GithubPages+Next.md/","path":"2024/10/08/Hexo 博客搭建 (1) - Hexo+GithubPages+Next.md/","title":"Hexo 博客教程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/08/Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%20(1)%20-%20Hexo+GithubPages+Next.md/","path":"2024/10/08/Hexo 博客搭建 (1) - Hexo+GithubPages+Next.md/","title":"Hexo 博客搭建 (1) - Hexo+GithubPages+Next"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hexo 博客教程 | Duan Yao's Blog</title>
+<title>Hexo 博客搭建 (1) - Hexo+GithubPages+Next | Duan Yao's Blog</title>
   
 
 
@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -157,18 +157,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -235,12 +235,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Hexo 博客教程 | Duan Yao's Blog">
+      <meta itemprop="name" content="Hexo 博客搭建 (1) - Hexo+GithubPages+Next | Duan Yao's Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hexo 博客教程
+          Hexo 博客搭建 (1) - Hexo+GithubPages+Next
         </h1>
 
         <div class="post-meta-container">
@@ -258,7 +258,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-11 14:55:34" itemprop="dateModified" datetime="2024-10-11T14:55:34+08:00">2024-10-11</time>
+      <time title="修改时间：2024-10-11 16:30:18" itemprop="dateModified" datetime="2024-10-11T16:30:18+08:00">2024-10-11</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -284,7 +284,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>438</span>
+      <span>452</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -301,7 +301,9 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>本文说明 windows 环境下的 Hexo + github pages+ Next 的建站流程。</p>
+    <div class="post-body" itemprop="articleBody"><p>本文说明 windows 环境下的 Hexo + github pages+ Next
+的建站流程。以及备份 Github Pages 相关配置与文档。</p>
+<span id="more"></span>
 <h1 id="主机环境配置">主机环境配置</h1>
 <ol type="1">
 <li>本机安装 <code>Nodejs</code></li>
@@ -364,13 +366,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/10/08/SpringBoot%203%20%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" rel="prev" title="SpringBoot 3 开发流程.md">
-                  <i class="fa fa-angle-left"></i> SpringBoot 3 开发流程.md
+                <a href="/2024/10/08/SpringBoot3%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/" rel="prev" title="SpringBoot 3 开发流程">
+                  <i class="fa fa-angle-left"></i> SpringBoot 3 开发流程
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/10/08/Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%20(2)%20-%20%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9C%80%E6%B1%82%E9%85%8D%E7%BD%AE/" rel="next" title="Hexo主题个性化">
-                  Hexo主题个性化 <i class="fa fa-angle-right"></i>
+                <a href="/2024/10/08/Hexo%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%20(2)%20-%20%E4%B8%AA%E6%80%A7%E5%8C%96%E9%9C%80%E6%B1%82%E9%85%8D%E7%BD%AE/" rel="next" title="Hexo 博客搭建 (2) - 个性化需求配置">
+                  Hexo 博客搭建 (2) - 个性化需求配置 <i class="fa fa-angle-right"></i>
                 </a>
             </div>
           </div>
@@ -402,13 +404,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">1k</span>
+    <span title="站点总字数">3k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">5 分钟</span>
+    <span title="站点阅读时长">9 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
