@@ -67,6 +67,8 @@ href="https://www.cnblogs.com/cscshi/p/15196100.html">Hexo-NexT 添加图片
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">winget install --<span class="built_in">source</span> winget --exact --<span class="built_in">id</span> JohnMacFarlane.Pandoc</span><br></pre></td></tr></table></figure>
 <p>插件变动 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-math --save</span><br><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line"></span><br><span class="line">npm install hexo-renderer-pandoc --save</span><br><span class="line">npm install hexo-filter-mathjax --save</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <p>主题配置文件修改：可以自行参考：https://github.com/next-theme/hexo-filter-mathjax?tab=readme-ov-file#options</p>
+<p>重启电脑，重启 VSCode</p>
+<p>重新构建 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>Hexo</category>
