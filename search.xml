@@ -289,4 +289,189 @@ https://hexo-next.readthedocs.io/zh-cn/latest/next/base/%E9%A6%96%E9%A1%B5%E9%A2
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-Array-27.移除元素</title>
+    <url>/2024/10/14/Leetcode-Array-27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</url>
+    <content><![CDATA[<p>https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;envId=top-interview-150</p>
+<h1 id="思路">思路</h1>
+<h2 id="暴力解法">暴力解法</h2>
+<p>双重循环：每次找到一个 <code>val</code> ，就从前向后找到第一个不是
+<code>val</code> 的数进行替换。</p>
+<h2 id="正向指针">正向指针</h2>
+<p>上述暴力循环中，内层循环不必从头寻找，保留一个索引，每次从索引开始向后寻找</p>
+<h2 id="两侧双指针">两侧双指针</h2>
+<p>因为我们只需要将非 <code>val</code>
+数值存放在前半部分，不需要管后半部分是什么，所以我们可以使用双指针： -
+指针1：从后向前，找到第一个非<code>val</code> 数 -
+指针2：从前向后，找到第一个<code>val</code>数 -
+进行交换，之后先移动指针1，再移动指针2，如果指针1与指针2相遇，结束</p>
+<p>细节分析： 1. 全是非
+<code>val</code>，指针2会在最后一个非<code>val</code>
+位置碰上指针1。而凡是指针2碰上指针1，都是成功的，说明前面没有<code>val</code>
+2. 如果是指针1碰上指针2，意味着非<code>val</code> 数没有在后半部分了。
+3. 全是 <code>val</code>
+，需要判断相遇处的值是不是<code>val</code>才能兼容前述情况。所以我们需要在“指针1与指针2相遇后”，判断一次值</p>
+<p>上述分析乱七八糟，能看出来我今天状态不行。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], val: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        p=<span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> p == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        q,p=<span class="number">0</span>,p-<span class="number">1</span></span><br><span class="line">        <span class="comment"># 相遇</span></span><br><span class="line">        <span class="keyword">while</span> p &gt; q:</span><br><span class="line">            <span class="keyword">while</span> nums[p]== val <span class="keyword">and</span> p &gt;q: <span class="comment"># 找从后向前第一个非 val</span></span><br><span class="line">                p-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> nums[q]!=val <span class="keyword">and</span>  q &lt;p: <span class="comment"># 从前向后找到第一个 val</span></span><br><span class="line">                q+=<span class="number">1</span></span><br><span class="line">            <span class="comment"># swqp</span></span><br><span class="line">            temp = nums[q]</span><br><span class="line">            nums[q]=nums[p]</span><br><span class="line">            nums[p]=temp</span><br><span class="line">        <span class="comment"># 检查</span></span><br><span class="line">        <span class="keyword">if</span> nums[p]== val:</span><br><span class="line">            <span class="keyword">return</span> p</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> p+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>进一步优化代码，参考Leetcode官方题解，另外我的命名不太好，应该使用
+<code>right</code> <code>left</code>：</p>
+<p>我们更应该关注左侧的元素，应该首先从左向右找到 <code>val</code>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right=nums.length;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]==val)&#123;</span><br><span class="line">                nums[left]=nums[right-<span class="number">1</span>];</span><br><span class="line">                right--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+        <category>Array</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-Array-26.删除有序数组中的重复项</title>
+    <url>/2024/10/14/Leetcode-Array-26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</url>
+    <content><![CDATA[<p>https://leetcode.cn/problems/remove-duplicates-from-sorted-array/?envType=study-plan-v2&amp;envId=top-interview-150</p>
+<h1 id="思路">思路</h1>
+<p>重点：非严格递增、原地删除、相对顺序一致</p>
+<p>使用双指针，left 指针表示当前去重结果，right
+指针找到下一个替换位置。因为要保持相对顺序，我们从左向右查找</p>
+<p>伪代码： <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">left=1 right=1</span><br><span class="line">while right&lt;len:</span><br><span class="line">    if nums[left-1]==nums[right]:</span><br><span class="line">        right++</span><br><span class="line">    else: </span><br><span class="line">        swap(nums[left],nums[right])</span><br><span class="line">        left++;right++;</span><br><span class="line">return left</span><br></pre></td></tr></table></figure></p>
+<p>代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span><span class="number">1</span>,right=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(right&lt;nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left-<span class="number">1</span>]==nums[right])&#123;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              <span class="comment">// 这里没必要交换</span></span><br><span class="line">                <span class="comment">// int temp=nums[left];</span></span><br><span class="line">                nums[left]=nums[right];</span><br><span class="line">                <span class="comment">// nums[right]=temp;</span></span><br><span class="line">                right++;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+        <category>Array</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenCV-Python-Tutorial</title>
+    <url>/2024/10/14/OpenCV-Python-Tutorial/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>数字图像处理</category>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>数字图像处理</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字图像处理-1-基础</title>
+    <url>/2024/10/14/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-1-%E5%9F%BA%E7%A1%80/</url>
+    <content><![CDATA[
+]]></content>
+      <categories>
+        <category>数字图像处理</category>
+      </categories>
+      <tags>
+        <tag>数字图像处理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-Array-80.删除有序数组中的重复项2</title>
+    <url>/2024/10/14/Leetcode-Array-80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92/</url>
+    <content><![CDATA[<h1 id="思路">思路</h1>
+<p>重点： - 有序 - 原地删除 - 出现次数超过两次的，保留两次</p>
+<h2 id="暴力解法-计数">暴力解法-计数</h2>
+<p>从头遍历，出现一个新的数，将计数变量清零。当计数变量超过2时，删除这个元素，将后续元素前移.</p>
+<h2 id="快慢指针">快慢指针</h2>
+<p>和 26题目 本质上是类似的。</p>
+<ul>
+<li>使用 slow 指针标记下一个需要被替换的位置，slow
+之前的数列都已经满足要求</li>
+<li>使用 fast 指针找到下一个需要移动到 slow 位置的值</li>
+</ul>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">// 伪代码</span><br><span class="line">// 使用一个计数变量，使用一个暂存变量（当前正在计数的值）</span><br><span class="line">// 首先初始化slow找到第一个可以代替的位置</span><br><span class="line">// 将 fast 指针初始化为 slow，并向后边计数边寻找，如果计数变量小于2就移动，如果计数变量大于1就只移动right指针</span><br><span class="line">// 每次移动完值之后，将slow与right+1</span><br></pre></td></tr></table></figure>
+<p>突然想到完全没必要使用计数变量，因为是有序的，所以直接使用
+nums[i-2]?=nums[i] 就可以了</p>
+<p>代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length&lt;=<span class="number">2</span>) <span class="keyword">return</span> nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> slow=<span class="number">2</span>, fast=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(fast&lt;nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[slow-<span class="number">2</span>]!=nums[fast])&#123;<span class="comment">// 快指针</span></span><br><span class="line">                nums[slow]=nums[fast];</span><br><span class="line">                ++slow;</span><br><span class="line">            &#125;</span><br><span class="line">            ++fast;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+        <category>Array</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>双指针</tag>
+        <tag>快慢指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pycharm-OpenCv配置.md</title>
+    <url>/2024/10/14/Pycharm-OpenCV%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<p>本机环境 windows12.</p>
+<h1 id="pycharm-安装">Pycharm 安装</h1>
+<p>官网下载安装即可。</p>
+<h1 id="miniconda-安装">Miniconda 安装</h1>
+<ol type="1">
+<li>清华镜像源 下载
+https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/ 或者通过
+官网下载 https://repo.anaconda.com/miniconda/</li>
+<li>启动 conda 命令提示符</li>
+<li>创建一个新的环境，用于后续安装</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">conda create -n myenv_name python=3.8</span><br><span class="line">conda activate myenv</span><br><span class="line"></span><br><span class="line"><span class="comment"># 后续一些可能有用的命令</span></span><br><span class="line">pip install numpy</span><br><span class="line"><span class="comment">#或</span></span><br><span class="line">conda install numpy</span><br><span class="line">pip install -r requirements.txt</span><br><span class="line">pip list</span><br><span class="line">conda deactivate</span><br><span class="line">conda <span class="built_in">env</span> list</span><br><span class="line">conda <span class="built_in">env</span> remove -n myenv</span><br></pre></td></tr></table></figure>
+<p>注 conda 与 pip 的区别：
+Conda只能在conda环境中安装包，但是可以安装各种语言、各种类型的包。
+pip可以在任何环境中安装包，但是只能安装Python包。
+一般强烈建议两者不要混着用，建议使用 <code>conda</code>
+进行环境管理，<code>pip</code> 进行包管理。</p>
+<h1 id="opencv-安装">OpenCV 安装</h1>
+<p>可以在这里查看对应关系：https://pypi.tuna.tsinghua.edu.cn/simple/opencv-python/</p>
+<ol type="1">
+<li>打开 conda prompt</li>
+<li>激活对应环境</li>
+<li>安装opencv 包，<code>pip install opencv-python</code></li>
+</ol>
+<h1 id="pycharm-使用">Pycharm 使用</h1>
+<ol type="1">
+<li>在 <code>file-settings-project interpreter</code> 中 找到
+<code>miniconda/scripts/conda.exe</code> 文件后 <code>load</code></li>
+<li>选择环境，应用</li>
+<li>测试代码</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 基本IO</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="comment"># 读取版本号</span></span><br><span class="line"><span class="built_in">print</span>(cv2.getVersionString())</span><br><span class="line"><span class="comment"># 读取图片</span></span><br><span class="line">image = cv2.imread(<span class="string">&quot;opencv_logo.jpg&quot;</span>)</span><br><span class="line"><span class="comment"># 打印图片的形状（高度，宽度，通道数）</span></span><br><span class="line"><span class="built_in">print</span>(image.shape)</span><br><span class="line"></span><br><span class="line">cv2.imshow(<span class="string">&quot;image&quot;</span>, image)</span><br><span class="line">cv2.waitKey()  <span class="comment"># 让窗口暂停</span></span><br></pre></td></tr></table></figure>
+<h1 id="其他">其他</h1>
+<p>最后，如果需要使用人脸识别等的功能，在
+<code>opencv-python</code>中没有，需要<code>pip install opencv-contrib-python</code></p>
+]]></content>
+      <categories>
+        <category>环境配置</category>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>环境配置</tag>
+        <tag>OpenCV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-Array-88.合并两个有序数组</title>
+    <url>/2024/10/14/Leetcode-Array-88-%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/</url>
+    <content><![CDATA[<p>https://leetcode.cn/problems/merge-sorted-array/description/?envType=study-plan-v2&amp;envId=top-interview-150</p>
+<p>按照非递减顺序将两个有序数组合并到第一个数组中。</p>
+<h1 id="思路">思路</h1>
+<h2 id="暴力解法">暴力解法</h2>
+<p>循环比较</p>
+<h2 id="双指针">双指针</h2>
+<p>双指针移动向后，但存在一个问题，第二个数组插入第一个数组可能会挤占原有数组中还未换出的元素，所以需要比较A、B、挤占出的元素三者。</p>
+<h2 id="逆序双指针">逆序双指针</h2>
+<p>采用逆序，就能避免挤占A中未处理元素。因为B最多就直接放在A后面。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+        <category>Array</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
 </search>
