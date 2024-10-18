@@ -265,7 +265,7 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -320,6 +320,128 @@ mjx-container[display="true"] + br {
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/14/Leetcode-Array-27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/14/Leetcode-Array-27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="post-title-link" itemprop="url">Leetcode-Array-27.移除元素</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-10-14 09:45:27 / 修改时间：11:15:35" itemprop="dateCreated datePublished" datetime="2024-10-14T09:45:27+08:00">2024-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Leetcode/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>515</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>https://leetcode.cn/problems/remove-element/description/?envType=study-plan-v2&amp;envId=top-interview-150</p>
+<h1 id="思路">思路</h1>
+<h2 id="暴力解法">暴力解法</h2>
+<p>双重循环：每次找到一个 <code>val</code> ，就从前向后找到第一个不是
+<code>val</code> 的数进行替换。</p>
+<h2 id="正向指针">正向指针</h2>
+<p>上述暴力循环中，内层循环不必从头寻找，保留一个索引，每次从索引开始向后寻找</p>
+<h2 id="两侧双指针">两侧双指针</h2>
+<p>因为我们只需要将非 <code>val</code>
+数值存放在前半部分，不需要管后半部分是什么，所以我们可以使用双指针： -
+指针1：从后向前，找到第一个非<code>val</code> 数 -
+指针2：从前向后，找到第一个<code>val</code>数 -
+进行交换，之后先移动指针1，再移动指针2，如果指针1与指针2相遇，结束</p>
+<p>细节分析： 1. 全是非
+<code>val</code>，指针2会在最后一个非<code>val</code>
+位置碰上指针1。而凡是指针2碰上指针1，都是成功的，说明前面没有<code>val</code>
+2. 如果是指针1碰上指针2，意味着非<code>val</code> 数没有在后半部分了。
+3. 全是 <code>val</code>
+，需要判断相遇处的值是不是<code>val</code>才能兼容前述情况。所以我们需要在“指针1与指针2相遇后”，判断一次值</p>
+<p>上述分析乱七八糟，能看出来我今天状态不行。代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">removeElement</span>(<span class="params">self, nums: <span class="type">List</span>[<span class="built_in">int</span>], val: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        p=<span class="built_in">len</span>(nums)</span><br><span class="line">        <span class="keyword">if</span> p == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        q,p=<span class="number">0</span>,p-<span class="number">1</span></span><br><span class="line">        <span class="comment"># 相遇</span></span><br><span class="line">        <span class="keyword">while</span> p &gt; q:</span><br><span class="line">            <span class="keyword">while</span> nums[p]== val <span class="keyword">and</span> p &gt;q: <span class="comment"># 找从后向前第一个非 val</span></span><br><span class="line">                p-=<span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> nums[q]!=val <span class="keyword">and</span>  q &lt;p: <span class="comment"># 从前向后找到第一个 val</span></span><br><span class="line">                q+=<span class="number">1</span></span><br><span class="line">            <span class="comment"># swqp</span></span><br><span class="line">            temp = nums[q]</span><br><span class="line">            nums[q]=nums[p]</span><br><span class="line">            nums[p]=temp</span><br><span class="line">        <span class="comment"># 检查</span></span><br><span class="line">        <span class="keyword">if</span> nums[p]== val:</span><br><span class="line">            <span class="keyword">return</span> p</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> p+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>进一步优化代码，参考Leetcode官方题解，另外我的命名不太好，应该使用
+<code>right</code> <code>left</code>：</p>
+<p>我们更应该关注左侧的元素，应该首先从左向右找到 <code>val</code>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeElement</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> val)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right=nums.length;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left]==val)&#123;</span><br><span class="line">                nums[left]=nums[right-<span class="number">1</span>];</span><br><span class="line">                right--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1125,13 +1247,13 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">7k</span>
+    <span title="站点总字数">14k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">26 分钟</span>
+    <span title="站点阅读时长">51 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
