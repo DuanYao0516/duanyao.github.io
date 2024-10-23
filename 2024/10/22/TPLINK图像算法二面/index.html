@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/d.png">
+  <link rel="mask-icon" href="/images/d.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="1022 tplink 算法二面 面试题  自我介绍 多标签分类，标签缺失、类别不均衡 python 中 is 与 &#x3D;&#x3D; 的区别 resnet 及其后续工作 详细询问CUB200项目，方法等等，数据增强 梯度消失与梯度爆炸 增大感受野的方法，空洞卷积、增大核面积 diffusion model 项目的原理与工作 复杂场景下的行人识别？？？ fixmatch 标签？ 有没有关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TPLINK图像算法二面">
+<meta property="og:url" content="http://example.com/2024/10/22/TPLINK%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2/index.html">
+<meta property="og:site_name" content="Duan Yao&#39;s Blog">
+<meta property="og:description" content="1022 tplink 算法二面 面试题  自我介绍 多标签分类，标签缺失、类别不均衡 python 中 is 与 &#x3D;&#x3D; 的区别 resnet 及其后续工作 详细询问CUB200项目，方法等等，数据增强 梯度消失与梯度爆炸 增大感受野的方法，空洞卷积、增大核面积 diffusion model 项目的原理与工作 复杂场景下的行人识别？？？ fixmatch 标签？ 有没有关">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-22T14:19:38.000Z">
+<meta property="article:modified_time" content="2024-10-23T08:15:27.810Z">
+<meta property="article:author" content="Duan Yao">
+<meta property="article:tag" content="人工智能">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="semi-supervised">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/10/22/TPLINK%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/22/TPLINK%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2/","path":"2024/10/22/TPLINK图像算法二面/","title":"TPLINK图像算法二面"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>TPLINK图像算法二面 | Duan Yao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Duan Yao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">思无涯，行无疆，言无忌，行无羁</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#tplink-%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2-%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">1022 tplink 算法二面 面试题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8D%E5%86%99%E7%AD%94%E6%A1%88"><span class="nav-number">2.</span> <span class="nav-text">重写答案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%9A%E6%A0%87%E7%AD%BE%E5%88%86%E7%B1%BB%E7%9A%84%E7%B1%BB%E5%88%AB%E7%BC%BA%E5%A4%B1%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">多标签分类的类别缺失问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%88%AB%E4%B8%8D%E5%9D%87%E8%A1%A1%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">类别不均衡问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python-%E4%B8%AD-is-%E4%B8%8E-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">2.3.</span> <span class="nav-text">Python 中 is 与 &#x3D;&#x3D; 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#resnet-%E5%8F%8A%E5%85%B6%E5%90%8E%E7%BB%AD%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.4.</span> <span class="nav-text">ResNet 及其后续工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A2%AF%E5%BA%A6%E6%B6%88%E5%A4%B1%E4%B8%8E%E6%A2%AF%E5%BA%A6%E7%88%86%E7%82%B8"><span class="nav-number">2.5.</span> <span class="nav-text">梯度消失与梯度爆炸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E5%A4%A7%E6%84%9F%E5%8F%97%E9%87%8E%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="nav-number">2.6.</span> <span class="nav-text">增大感受野的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#diffupps-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">DiffuPPS 的工作原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E8%A1%8C%E4%BA%BA%E9%87%8D%E8%AF%86%E5%88%AB"><span class="nav-number">2.8.</span> <span class="nav-text">复杂场景下的行人重识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%89%E6%B2%A1%E6%9C%89%E5%85%B3%E6%B3%A8%E6%9C%80%E6%96%B0%E7%9A%84%E5%B7%A5%E4%BD%9C%E8%BF%9B%E5%B1%95"><span class="nav-number">2.9.</span> <span class="nav-text">有没有关注最新的工作进展？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fixmatch%E5%8F%8A%E5%85%B6%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-number">2.10.</span> <span class="nav-text">FixMatch及其相关工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-%E6%98%AF%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%86%B2%E7%AA%81%E7%9A%84%E8%BF%98%E9%9C%80%E8%A6%81-commit-%E5%90%97"><span class="nav-number">2.11.</span> <span class="nav-text">Git
+是如何解决冲突的，还需要 commit 吗？</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Duan Yao"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Duan Yao</p>
+  <div class="site-description" itemprop="description">SYSU-CS in study.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">18</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">26</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DuanYao0516" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DuanYao0516" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:duanyao0516@163.com" title="E-Mail → mailto:duanyao0516@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/duan-yao" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener me" target="_blank">Gitee</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://gitee.com/duan-yao" title="https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener" target="_blank">Gitee</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/22/TPLINK%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="TPLINK图像算法二面 | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          TPLINK图像算法二面
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-22 22:19:38" itemprop="dateCreated datePublished" datetime="2024-10-22T22:19:38+08:00">2024-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-23 16:15:27" itemprop="dateModified" datetime="2024-10-23T16:15:27+08:00">2024-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">面试记录</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%B8%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">图像算法与人工智能</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="tplink-算法二面-面试题">1022 tplink 算法二面 面试题</h1>
+<ol type="1">
+<li>自我介绍</li>
+<li>多标签分类，标签缺失、类别不均衡</li>
+<li>python 中 is 与 == 的区别</li>
+<li>resnet 及其后续工作</li>
+<li>详细询问CUB200项目，方法等等，数据增强</li>
+<li>梯度消失与梯度爆炸</li>
+<li>增大感受野的方法，空洞卷积、增大核面积</li>
+<li>diffusion model 项目的原理与工作</li>
+<li>复杂场景下的行人识别？？？</li>
+<li>fixmatch 标签？</li>
+<li>有没有关注最新的工作进展？</li>
+<li>Git 如何解决冲突，还需要 commit吗？</li>
+</ol>
+<h1 id="重写答案">重写答案</h1>
+<h2 id="多标签分类的类别缺失问题">多标签分类的类别缺失问题</h2>
+<p>首先说明，多标签分类中，类别标签缺失叫做
+缺失标签学习（MLML），标注的部分标签正确，但是存在不相关的标签，称为部分标签学习（PML），对于PML，所有标签都应该包含在候选标签集中。</p>
+<p>这个问题我不是很清楚，我的回答侧重于采用半监督学习类似的方法，或者划分集合将任务分解为多个二元分类问题后进行集成学习。</p>
+<blockquote>
+<p>chatGPT回答：</p>
+<p>多标签分类问题中，标签缺失通常指某些标签的标注不完整或缺失，导致模型无法获得完整的训练信息。应对这一问题的方法包括：</p>
+<ul>
+<li><strong>使用部分标注学习（Partial Label
+Learning）</strong>：部分标注学习方法能够处理只有部分标签信息的情况，通过估计未标注标签的可能性，或通过假设缺失标签的分布与已标注标签一致来进行训练。</li>
+<li><strong>多任务学习（Multi-Task
+Learning）</strong>：将标签预测任务视为多个相关任务，利用各个任务之间的相关性来填补标签缺失的数据。</li>
+<li><strong>标签传播算法（Label
+Propagation）</strong>：通过图结构将已知的标签信息传播到缺失标签的实例上，基于相似性将标签分配给未标注的数据。</li>
+<li><strong>生成模型（Generative
+Models）</strong>：利用生成模型（如变分自编码器、生成对抗网络）生成缺失标签，模型通过学习数据的分布生成合理的标签。</li>
+</ul>
+</blockquote>
+<h2 id="类别不均衡问题">类别不均衡问题</h2>
+<p>在多标签分类中，类别不均衡指某些标签的样本数量远多于其他标签，这会导致模型偏向于预测常见标签。常见的解决方法包括：</p>
+<ul>
+<li><strong>重采样（Resampling）</strong>：
+<ul>
+<li><strong>上采样少数类</strong>：通过复制少数类样本或合成新样本（如SMOTE）来平衡类之间的样本数量。</li>
+<li><strong>下采样多数类</strong>：减少多数类的样本数量，使其与少数类相匹配，但下采样可能丢失部分有用信息。</li>
+</ul></li>
+<li><strong>代价敏感学习（Cost-Sensitive
+Learning）</strong>：通过为不同类别分配不同的误分类代价，模型可以更加关注少数类。例如，对少数类分配较高的损失权重，迫使模型更好地学习这些类别。</li>
+<li><strong>数据增强（Data
+Augmentation）</strong>：通过数据增强技术（如旋转、翻转、裁剪等）生成更多少数类的样本，以增加其多样性。</li>
+<li><strong>类平衡损失函数（Class-Balanced Loss
+Function）</strong>：使用专门设计的损失函数，例如Focal
+Loss或加权交叉熵损失函数，对少数类和多数类样本的贡献进行重新加权，使模型在训练时不会过度偏向多数类。</li>
+</ul>
+<h2 id="python-中-is-与-的区别">Python 中 is 与 == 的区别</h2>
+<p>因为我给面试官说，我对语言特性不是非常的精通，所以说问一个简单的问题，这个面试题反映出来面试准备中还是需要重视语言部分。</p>
+<p><code>is</code> 运算符：</p>
+<ul>
+<li><strong>作用</strong>：<code>is</code>
+用于比较两个对象的<strong>身份</strong>，即它们在内存中的<strong>引用地址</strong>是否相同。换句话说，<code>is</code>
+判断的是两个变量是否指向同一个对象。</li>
+<li><strong>使用场景</strong>：<code>is</code>
+通常用于检查两个对象是否是同一个实例，或者用于与 <code>None</code>
+进行比较。</li>
+</ul>
+<p><code>==</code> 运算符：</p>
+<ul>
+<li><strong>作用</strong>：<code>==</code>
+用于比较两个对象的<strong>值</strong>，即它们的内容是否相同，而不关心它们是否是同一个对象。</li>
+<li><strong>使用场景</strong>：<code>==</code>
+常用于比较两个变量的内容是否相等，不论它们是否是同一个对象。</li>
+</ul>
+<p>简而言之，<code>is</code>
+比较对象在内存中的地址是否相同，<code>==</code>检查两个对象的内容是否相等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = a</span><br><span class="line">c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">is</span> b)  <span class="comment"># True, 因为 a 和 b 引用的是同一个列表对象</span></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">is</span> c)  <span class="comment"># False, 因为 a 和 c 是不同的列表对象，虽然它们内容相同</span></span><br><span class="line"><span class="built_in">print</span>(a == b)  <span class="comment"># True, 因为 a 和 b 的内容相同</span></span><br><span class="line"><span class="built_in">print</span>(a == c)  <span class="comment"># True, 因为 a 和 c 的内容相同</span></span><br></pre></td></tr></table></figure>
+<p>chat：在一些情况下，特别是比较不可变对象（如整数、小字符串等）时，由于
+Python 的内部优化，可能会出现 <code>is</code> 和 <code>==</code> 都为
+<code>True</code> 的情况（这种情况很难讲），例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1000</span></span><br><span class="line">b = <span class="number">1000</span></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">is</span> b)  <span class="comment"># False, 因为它们是不同的对象，但是注意，这里我实际上在 python 3.8 中进行测试，结果是 True</span></span><br><span class="line"><span class="built_in">print</span>(a == b)  <span class="comment"># True, 因为它们的值相同</span></span><br><span class="line"></span><br><span class="line">x = <span class="number">100</span></span><br><span class="line">y = <span class="number">100</span></span><br><span class="line"><span class="built_in">print</span>(x <span class="keyword">is</span> y)  <span class="comment"># True, 因为小整数在 Python 中被缓存，指向相同对象</span></span><br><span class="line"><span class="built_in">print</span>(x == y)  <span class="comment"># True, 因为它们的值相同</span></span><br></pre></td></tr></table></figure>
+<h2 id="resnet-及其后续工作">ResNet 及其后续工作</h2>
+<p>ResNet的主要贡献包括：</p>
+<ol type="1">
+<li><strong>残差学习</strong>：通过引入残差连接，使得网络可以学习输入到输出的残差映射，而不是直接学习映射本身，这有效缓解了梯度消失问题。</li>
+<li><strong>批量归一化</strong>：ResNet还采用了批量归一化（Batch
+Normalization）技术，进一步提高了模型的训练稳定性和性能。</li>
+<li><strong>全局平均池化</strong>：ResNet使用全局平均池化层替代了传统的全连接层，减少了模型参数并提高了泛化能力。</li>
+</ol>
+<p><strong>ResNeXt</strong>：<strong>ResNeXt</strong> 是 ResNet
+的扩展版本，提出了一种叫做“分组卷积”（Grouped
+Convolution）的设计。它通过引入多个并行的卷积路径（即“分支”）来提升模型的表达能力，同时保持参数量的可控性。ResNeXt
+提供了更好的<strong>模块化设计</strong>，使得可以通过简单增加分支数来提高模型的性能。</p>
+<p><strong>Wide ResNet</strong>：<strong>Wide ResNet</strong>
+提出，通过增加网络的宽度（即每层通道数）而非深度，可以减少网络的训练时间，同时保持甚至提升精度。与非常深的网络相比，宽网络在计算效率和收敛速度上具有一定优势。</p>
+<p><strong>DenseNet</strong>：<strong>DenseNet</strong> 是受 ResNet
+启发提出的另一种网络结构，它通过在每一层中连接所有前一层的特征图，使得网络的梯度传递更加顺畅，进一步缓解了梯度消失问题。与
+ResNet 的残差连接不同，DenseNet 采用的是<strong>密集连接（Dense
+Connection）</strong>，每一层都接收所有前面层的输入。</p>
+<p><strong>Res2Net</strong>：<strong>Res2Net</strong> 是对 ResNet
+进一步扩展的版本，它通过将每个残差块内部进行分组，并使不同组之间的特征有级联连接，实现了更细粒度的特征表示，提升了网络的表达能力。</p>
+<p><strong>SENet</strong>：<strong>SENet</strong>
+（Squeeze-and-Excitation
+Network）通过引入<strong>通道注意力机制</strong>，提升了 ResNet
+的表示能力。SENet
+在每个残差块中增加了“压缩”和“激励”操作，使得网络能够自适应地重新调整每个通道的重要性。</p>
+<h2 id="梯度消失与梯度爆炸">梯度消失与梯度爆炸</h2>
+<ol type="1">
+<li>梯度消失：（Vanishing Gradient）：</li>
+</ol>
+<ul>
+<li><strong>定义</strong>：梯度消失是指在反向传播过程中，随着网络层数的增加，梯度逐渐变得非常小，接近于零，导致前面层的权重更新几乎停滞不前，模型难以有效训练。这在深层神经网络中特别常见，尤其是在使用饱和激活函数（如
+sigmoid、tanh）时，梯度的值会随着层数的增加迅速衰减。</li>
+<li><strong>影响</strong>：网络的前面层权重更新变得非常缓慢，网络难以收敛，甚至可能无法训练到有效的参数。</li>
+<li><strong>解决方法</strong>：
+<ul>
+<li><strong>使用 ReLU 激活函数</strong>：
+<ul>
+<li>ReLU（Rectified Linear Unit）激活函数避免了 Sigmoid 或 Tanh
+的饱和区域，它的导数要么为 1（正区域），要么为
+0（负区域），可以在一定程度上减轻梯度消失问题。</li>
+<li>其他 ReLU 的变体如 Leaky ReLU、ELU 也可以用于缓解梯度消失问题</li>
+</ul></li>
+<li><strong>残差网络（ResNet）</strong>：ResNet
+通过引入<strong>跳跃连接（skip
+connections）</strong>，将输入直接传递到后续层，从而有效缓解了梯度消失问题。这使得深层网络的梯度可以更加顺畅地传递。</li>
+<li><strong>LSTM 和 GRU（解决 RNN
+中的梯度消失）</strong>：长短时记忆网络（LSTM）和门控循环单元（GRU）在结构设计上，通过引入门机制控制信息流，能够有效减轻循环神经网络（RNN）中的梯度消失问题</li>
+<li><strong>批归一化（Batch
+Normalization）</strong>：在每一层后添加批归一化层，可以将输入数据归一化，使得数据在训练过程中保持稳定的分布，从而有助于避免梯度的急剧消失。</li>
+<li><strong>权重初始化方法</strong>：使用合适的权重初始化方法（如 Xavier
+初始化或 He
+初始化），能够让初始的激活函数值保持适当的范围，从而避免梯度过小或过大，帮助梯度更好地传递。</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>梯度爆炸 Exploding Gradient：</li>
+</ol>
+<ul>
+<li><strong>定义</strong>：梯度爆炸是指在反向传播过程中，随着网络层数的增加，梯度变得非常大，导致前面层的权重更新幅度过大，模型参数不稳定，最终导致梯度无法收敛或参数溢出。在深层网络或循环神经网络（RNN）中，梯度爆炸问题尤其严重，因为梯度在长时间步内累积，容易产生数值溢出。模型训练时权重更新非常不稳定，损失值波动过大，难以收敛。</li>
+<li><strong>解决方法</strong>：
+<ul>
+<li><strong>梯度裁剪（Gradient
+Clipping）</strong>：梯度裁剪是处理梯度爆炸的一种常见方法。通过设置梯度的最大值，当梯度的范数超过设定的阈值时，将梯度进行裁剪，防止其变得过大。例如，在
+RNN 中经常使用梯度裁剪来避免梯度爆炸。</li>
+<li><strong>权重初始化方法</strong>：适当的权重初始化也可以减轻梯度爆炸问题。通过
+Xavier 或 He
+初始化，可以确保权重值不会导致过大的激活函数输出，从而避免梯度过大。</li>
+<li><strong>使用正则化技术</strong>：<strong>L2
+正则化</strong>（权重衰减）通过在损失函数中添加权重的平方和项，能够有效限制权重值的增长，防止梯度爆炸问题的发生。</li>
+<li><strong>使用较小的学习率</strong>：调整学习率可以有效控制权重更新的幅度，使用较小的学习率可以减轻梯度爆炸问题，使模型训练更加稳定。</li>
+<li><strong>批归一化（Batch
+Normalization）</strong>：批归一化除了可以缓解梯度消失问题，也能帮助稳定梯度传递，避免梯度爆炸。它通过将激活值归一化，避免激活值的分布过度偏离，进而保持梯度的稳定性。</li>
+<li>更改激活函数可以缓解，但是不能从根本上解决。</li>
+</ul></li>
+</ul>
+<h2 id="增大感受野的方式">增大感受野的方式</h2>
+<ol type="1">
+<li>使用空洞卷积（不增加计算量，一般在语义分割里面用的比较多，能在保持高分辨率的同时捕获更加广泛的上下文信息·`）</li>
+<li>增加网络深度（会让参数量增多）</li>
+<li>使用较大的卷积核（但是会增大参数量与计算量）</li>
+<li>调整步长（卷积或者池化层）</li>
+<li>空间金字塔池化（SPP）：在不同尺度对特征图进行池化操作。</li>
+<li>小波变换的新型卷积方式（WTConv），级联小波变换和在不同频率带上执行小卷积核的卷积增加感受野。</li>
+<li>下采样降低分辨率。</li>
+</ol>
+<h2 id="diffupps-的工作原理">DiffuPPS 的工作原理</h2>
+<p>这个暂时不能说，论文还没发出来。</p>
+<h2 id="复杂场景下的行人重识别">复杂场景下的行人重识别</h2>
+<p>这个也还暂时不能说。</p>
+<h2 id="有没有关注最新的工作进展">有没有关注最新的工作进展？</h2>
+<p>最近一段时间我主要集中精力在撰写一篇与NLP相关的论文，因此没有太多时间专门关注图像算法领域的最新工作。不过，我一直对该领域保持高度兴趣，之前我有深入研究过[提到一些你熟悉的图像算法领域的工作或模型]。我非常愿意在接下来的时间里迅速跟进最新的研究进展，以确保自己的知识保持前沿。</p>
+<h2 id="fixmatch及其相关工作">FixMatch及其相关工作</h2>
+<p>这个可以参考我另外外一篇有关于半监督分类的博客。</p>
+<h2 id="git-是如何解决冲突的还需要-commit-吗">Git
+是如何解决冲突的，还需要 commit 吗？</h2>
+<p>Git
+冲突的本质：（个人认为）远程库包含了本地库中没有的内容，或者说，本地库的修改基础不是远程库的版本。</p>
+<p>发生冲突后：</p>
+<ol type="1">
+<li>拉取远程仓库内容： <code>git pull</code>，<code>git pull</code>
+等价于 <code>git fetch + git merge</code></li>
+<li>提示存在冲突，进入 <code>MERGING</code>状态</li>
+<li>通过 <code>git status</code> 查看需要修改的文件名</li>
+<li>也可以使用 <code>git diff</code> 查看已经修改的文件的差异</li>
+<li>在文件中进行冲突修改</li>
+<li>待文件修改完成之后，再次执行提交动作，需要包含 <code>add</code>
+<code>commit</code> 两个动作</li>
+<li>提交后使用 <code>git-log</code>
+查看本地库的记录，一般能够看到一个双分支合并在一起</li>
+<li>本地提交完成后即可推送远程代码 <code>git push</code></li>
+</ol>
+<p>没明白这个面试官反问我“解决冲突之后难道还需要再次comit吗？不会产生一个新的提交记录吗”是什么意思。</p>
+<p>貌似还有一种解决冲突的办法：</p>
+<ol type="1">
+<li>本地修改代码后按步骤提交</li>
+<li>推送远程代码失败，需拉取远程库代码</li>
+<li>使用拉取命令“git pull --rebase origin master”</li>
+<li>找到冲突代码人工修改</li>
+<li>重新执行提交动作， (1)git add .<br>
+(2)git commit -m “xxx”<br>
+(3)git rebase --continue (4)git push origin master</li>
+</ol>
+<p>这种<code>rebase</code>方法似乎时不能用在有多个分支的主分支上面的。</p>
+<p>一般来讲，解决冲突比较好的办法：个人认为：</p>
+<ol type="1">
+<li>多分支开发，大家使用PR合并</li>
+<li>提交之前先进行 <code>git pull</code>，杜绝强行覆盖远程仓库</li>
+<li>抢先提交（狗头</li>
+</ol>
+<p>一般来说，我比较赞同第一种，有一个bug修改或者一个功能开发，应该新建分支，而不是在原有分支上直接进行改动，这样也有利于进行测试和规范化。</p>
+<p>预防冲突的办法： 1. 频繁拉取 2. 小步提交 3.
+良好的沟通，了解彼此的工作进展</p>
+<p>复习一些常见的Git指令，见另外一个博客。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" rel="tag"><i class="fa fa-tag"></i> 人工智能</a>
+              <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
+              <a href="/tags/semi-supervised/" rel="tag"><i class="fa fa-tag"></i> semi-supervised</a>
+              <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-0-%E9%80%9A%E8%AF%86%E4%B8%8E%E5%9F%BA%E7%A1%80/" rel="prev" title="机器学习-0-通识与基础">
+                  <i class="fa fa-angle-left"></i> 机器学习-0-通识与基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Duan Yao</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">26k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:36</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","single_dollars":true,"cjk_width":0.9,"normal_width":0.6,"append_css":true,"every_page":false,"packages":null,"extension_options":{},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

@@ -20,16 +20,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="需要看的东西 这个面经 网上面经 数字图像处理经典方法 自己的项目 机器学习经典方法 目标检测 RCNN fast RCNN YOLO 纸质版面经 过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数 梯度消失：两种说法：一般是选了不合适的激活函数 1. 靠近输出层的梯度大，收敛快，靠近输入层的梯度小，更新慢，几乎和初始一样。(从深度神经网络角度看) 2.">
+    <meta name="description" content="需要看的东西 这个面经 网上面经 数字图像处理经典方法 自己的项目 机器学习经典方法 目标检测 RCNN fast RCNN YOLO 纸质版面经 过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数 欠拟合的处理方法：模型复杂化、增加特征、调整参数与超参数、增加训练数据一般是没用的、降低正则化约束 梯度消失：两种说法：一般是选了不合适的激活函数 1. 靠">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cv面经">
 <meta property="og:url" content="http://example.com/2024/10/17/CV%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86/index.html">
 <meta property="og:site_name" content="Duan Yao&#39;s Blog">
-<meta property="og:description" content="需要看的东西 这个面经 网上面经 数字图像处理经典方法 自己的项目 机器学习经典方法 目标检测 RCNN fast RCNN YOLO 纸质版面经 过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数 梯度消失：两种说法：一般是选了不合适的激活函数 1. 靠近输出层的梯度大，收敛快，靠近输入层的梯度小，更新慢，几乎和初始一样。(从深度神经网络角度看) 2.">
+<meta property="og:description" content="需要看的东西 这个面经 网上面经 数字图像处理经典方法 自己的项目 机器学习经典方法 目标检测 RCNN fast RCNN YOLO 纸质版面经 过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数 欠拟合的处理方法：模型复杂化、增加特征、调整参数与超参数、增加训练数据一般是没用的、降低正则化约束 梯度消失：两种说法：一般是选了不合适的激活函数 1. 靠">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2024/10/17/CV%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86/image.png">
 <meta property="article:published_time" content="2024-10-17T14:13:45.000Z">
-<meta property="article:modified_time" content="2024-10-18T13:13:29.008Z">
+<meta property="article:modified_time" content="2024-10-23T03:13:26.503Z">
 <meta property="article:author" content="Duan Yao">
 <meta property="article:tag" content="博客">
 <meta name="twitter:card" content="summary">
@@ -143,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E7%9C%8B%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="nav-number">1.</span> <span class="nav-text">需要看的东西</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%B8%E8%B4%A8%E7%89%88%E9%9D%A2%E7%BB%8F"><span class="nav-number">2.</span> <span class="nav-text">纸质版面经</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E4%B8%8A%E9%9D%A2%E7%BB%8F"><span class="nav-number">3.</span> <span class="nav-text">网上面经</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="nav-number">4.</span> <span class="nav-text">自己的项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">扩散模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transformer"><span class="nav-number">4.3.</span> <span class="nav-text">transformer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gan"><span class="nav-number">4.4.</span> <span class="nav-text">GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fgsm-pgd"><span class="nav-number">4.5.</span> <span class="nav-text">FGSM PGD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.6.</span> <span class="nav-text">迁移学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vit"><span class="nav-number">4.7.</span> <span class="nav-text">ViT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cam"><span class="nav-number">4.8.</span> <span class="nav-text">CAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B"><span class="nav-number">4.9.</span> <span class="nav-text">蒙特卡洛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E7%BA%B9%E7%90%86%E4%B8%8E%E5%9B%BE%E5%83%8F%E7%BA%B9%E7%90%86"><span class="nav-number">4.10.</span> <span class="nav-text">实体纹理与图像纹理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">4.11.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="nav-number">5.</span> <span class="nav-text">目标检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5"><span class="nav-number">6.</span> <span class="nav-text">两阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">7.</span> <span class="nav-text">各类指标计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F"><span class="nav-number">7.1.</span> <span class="nav-text">图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nlp"><span class="nav-number">7.2.</span> <span class="nav-text">NLP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">数字图像处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-1"><span class="nav-number">9.</span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%AE%97%E6%B3%95"><span class="nav-number">9.1.</span> <span class="nav-text">两阶段算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%BC%8F-%E5%88%A4%E5%88%AB%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">生成式 判别式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hog"><span class="nav-number">11.</span> <span class="nav-text">HOG</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sift"><span class="nav-number">12.</span> <span class="nav-text">SIFT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lbp"><span class="nav-number">13.</span> <span class="nav-text">LBP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0"><span class="nav-number">14.</span> <span class="nav-text">集成学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tplink-%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95"><span class="nav-number">15.</span> <span class="nav-text">1018 tplink 图像算法面试</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E7%9C%8B%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="nav-number">1.</span> <span class="nav-text">需要看的东西</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%B8%E8%B4%A8%E7%89%88%E9%9D%A2%E7%BB%8F"><span class="nav-number">2.</span> <span class="nav-text">纸质版面经</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BD%91%E4%B8%8A%E9%9D%A2%E7%BB%8F"><span class="nav-number">3.</span> <span class="nav-text">网上面经</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E5%B7%B1%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="nav-number">4.</span> <span class="nav-text">自己的项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">4.1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A9%E6%95%A3%E6%A8%A1%E5%9E%8B"><span class="nav-number">4.2.</span> <span class="nav-text">扩散模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#transformer"><span class="nav-number">4.3.</span> <span class="nav-text">transformer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gan"><span class="nav-number">4.4.</span> <span class="nav-text">GAN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#fgsm-pgd"><span class="nav-number">4.5.</span> <span class="nav-text">FGSM PGD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%81%E7%A7%BB%E5%AD%A6%E4%B9%A0"><span class="nav-number">4.6.</span> <span class="nav-text">迁移学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vit"><span class="nav-number">4.7.</span> <span class="nav-text">ViT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cam"><span class="nav-number">4.8.</span> <span class="nav-text">CAM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B"><span class="nav-number">4.9.</span> <span class="nav-text">蒙特卡洛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E7%BA%B9%E7%90%86%E4%B8%8E%E5%9B%BE%E5%83%8F%E7%BA%B9%E7%90%86"><span class="nav-number">4.10.</span> <span class="nav-text">实体纹理与图像纹理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#section"><span class="nav-number">4.11.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B"><span class="nav-number">5.</span> <span class="nav-text">目标检测</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5"><span class="nav-number">6.</span> <span class="nav-text">两阶段</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E6%8C%87%E6%A0%87%E8%AE%A1%E7%AE%97"><span class="nav-number">7.</span> <span class="nav-text">各类指标计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E5%83%8F"><span class="nav-number">7.1.</span> <span class="nav-text">图像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nlp"><span class="nav-number">7.2.</span> <span class="nav-text">NLP</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86"><span class="nav-number">8.</span> <span class="nav-text">数字图像处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B-1"><span class="nav-number">9.</span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%AE%97%E6%B3%95"><span class="nav-number">9.1.</span> <span class="nav-text">两阶段算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E5%BC%8F-%E5%88%A4%E5%88%AB%E5%BC%8F"><span class="nav-number">10.</span> <span class="nav-text">生成式 判别式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#hog"><span class="nav-number">11.</span> <span class="nav-text">HOG</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sift"><span class="nav-number">12.</span> <span class="nav-text">SIFT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#lbp"><span class="nav-number">13.</span> <span class="nav-text">LBP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9B%86%E6%88%90%E5%AD%A6%E4%B9%A0"><span class="nav-number">14.</span> <span class="nav-text">集成学习</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tplink-%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95"><span class="nav-number">15.</span> <span class="nav-text">1018 tplink 图像算法面试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#tplink-%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2"><span class="nav-number">16.</span> <span class="nav-text">1022 tplink 算法二面</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -158,18 +158,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -259,7 +259,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-18 21:13:29" itemprop="dateModified" datetime="2024-10-18T21:13:29+08:00">2024-10-18</time>
+      <time title="修改时间：2024-10-23 11:13:26" itemprop="dateModified" datetime="2024-10-23T11:13:26+08:00">2024-10-23</time>
     </span>
 
   
@@ -276,7 +276,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>6.8k</span>
+      <span>6.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -297,7 +297,8 @@
 <p>这个面经 网上面经 数字图像处理经典方法 自己的项目 机器学习经典方法
 目标检测 RCNN fast RCNN YOLO</p>
 <h1 id="纸质版面经">纸质版面经</h1>
-<p>过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数</p>
+<p>过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数
+欠拟合的处理方法：模型复杂化、增加特征、调整参数与超参数、增加训练数据一般是没用的、降低正则化约束</p>
 <p>梯度消失：两种说法：一般是选了不合适的激活函数 1.
 靠近输出层的梯度大，收敛快，靠近输入层的梯度小，更新慢，几乎和初始一样。(从深度神经网络角度看)
 2. 连乘小数导致的。（从激活函数角度看）</p>
@@ -402,7 +403,7 @@ Wasserstein距离又叫Earth Mover's Distance(EMD，推土机距离)，参考：
 渐变小。
 而梯度攻击的分类模型参数w不变（分类逻辑不变），y也固定不变，若希望损失函数值变大，就只能修改输入。下面就来看看如何利用梯度方法修改输入数据。</p>
 <p>https://mp.weixin.qq.com/s/rPCuDAYD34SSv9qPVutsNg</p>
-<p>GSM全称是Fast Gradient Sign
+<p>FGSM全称是Fast Gradient Sign
 Method快速梯度下降法。其原理是求模型误差函数对输入的导数，然后用符号函数得到其梯度方向，并乘以一个步长ε，将得到的“扰动”加在原来的输入数据之上就得到了攻击样本。</p>
 <p>FGSM从始至终只做了一次修改，改动的大小依赖步长ε，如果步长太大，则原数据被改得面目全非，如果改动太小又无法骗过模型。一般做干扰的目的是保持数据原始的性质，只为骗过模型，而非完全替换数据。迭代修改的方法PGD，每次进行少量修改，扰动多次</p>
 <h2 id="迁移学习">迁移学习</h2>
@@ -571,6 +572,21 @@ AdaBoost
 <li>transformer 计算方法</li>
 <li>BN 层的计算方法，参数量，训练与推理时的区别。</li>
 </ol>
+<h1 id="tplink-算法二面">1022 tplink 算法二面</h1>
+<ol type="1">
+<li>自我介绍</li>
+<li>多标签分类，标签缺失、类别不均衡</li>
+<li>python 中 is 与 == 的区别</li>
+<li>resnet 及其后续工作</li>
+<li>详细询问CUB200项目，方法等等，数据增强</li>
+<li>梯度消失与梯度爆炸</li>
+<li>增大感受野的方法，空洞卷积、增大核面积</li>
+<li>diffusion model 项目的原理与工作</li>
+<li>复杂场景下的行人识别？？？</li>
+<li>fixmatch 标签？</li>
+<li>有没有关注最新的工作进展？</li>
+<li>Git 如何解决冲突，还需要 commit吗？</li>
+</ol>
 
     </div>
 
@@ -589,6 +605,9 @@ AdaBoost
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2024/10/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-0-%E9%80%9A%E8%AF%86%E4%B8%8E%E5%9F%BA%E7%A1%80/" rel="next" title="机器学习-0-通识与基础">
+                  机器学习-0-通识与基础 <i class="fa fa-angle-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -619,13 +638,13 @@ AdaBoost
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">16k</span>
+    <span title="站点总字数">26k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">59 分钟</span>
+    <span title="站点阅读时长">1:36</span>
   </span>
 </div>
 <div class="busuanzi-count">

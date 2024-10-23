@@ -153,18 +153,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">25</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -217,6 +217,497 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/22/TPLINK%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/22/TPLINK%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%BA%8C%E9%9D%A2/" class="post-title-link" itemprop="url">TPLINK图像算法二面</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-22 22:19:38" itemprop="dateCreated datePublished" datetime="2024-10-22T22:19:38+08:00">2024-10-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-23 16:15:27" itemprop="dateModified" datetime="2024-10-23T16:15:27+08:00">2024-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">面试记录</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/%E5%9B%BE%E5%83%8F%E7%AE%97%E6%B3%95%E4%B8%8E%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">图像算法与人工智能</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="tplink-算法二面-面试题">1022 tplink 算法二面 面试题</h1>
+<ol type="1">
+<li>自我介绍</li>
+<li>多标签分类，标签缺失、类别不均衡</li>
+<li>python 中 is 与 == 的区别</li>
+<li>resnet 及其后续工作</li>
+<li>详细询问CUB200项目，方法等等，数据增强</li>
+<li>梯度消失与梯度爆炸</li>
+<li>增大感受野的方法，空洞卷积、增大核面积</li>
+<li>diffusion model 项目的原理与工作</li>
+<li>复杂场景下的行人识别？？？</li>
+<li>fixmatch 标签？</li>
+<li>有没有关注最新的工作进展？</li>
+<li>Git 如何解决冲突，还需要 commit吗？</li>
+</ol>
+<h1 id="重写答案">重写答案</h1>
+<h2 id="多标签分类的类别缺失问题">多标签分类的类别缺失问题</h2>
+<p>首先说明，多标签分类中，类别标签缺失叫做
+缺失标签学习（MLML），标注的部分标签正确，但是存在不相关的标签，称为部分标签学习（PML），对于PML，所有标签都应该包含在候选标签集中。</p>
+<p>这个问题我不是很清楚，我的回答侧重于采用半监督学习类似的方法，或者划分集合将任务分解为多个二元分类问题后进行集成学习。</p>
+<blockquote>
+<p>chatGPT回答：</p>
+<p>多标签分类问题中，标签缺失通常指某些标签的标注不完整或缺失，导致模型无法获得完整的训练信息。应对这一问题的方法包括：</p>
+<ul>
+<li><strong>使用部分标注学习（Partial Label
+Learning）</strong>：部分标注学习方法能够处理只有部分标签信息的情况，通过估计未标注标签的可能性，或通过假设缺失标签的分布与已标注标签一致来进行训练。</li>
+<li><strong>多任务学习（Multi-Task
+Learning）</strong>：将标签预测任务视为多个相关任务，利用各个任务之间的相关性来填补标签缺失的数据。</li>
+<li><strong>标签传播算法（Label
+Propagation）</strong>：通过图结构将已知的标签信息传播到缺失标签的实例上，基于相似性将标签分配给未标注的数据。</li>
+<li><strong>生成模型（Generative
+Models）</strong>：利用生成模型（如变分自编码器、生成对抗网络）生成缺失标签，模型通过学习数据的分布生成合理的标签。</li>
+</ul>
+</blockquote>
+<h2 id="类别不均衡问题">类别不均衡问题</h2>
+<p>在多标签分类中，类别不均衡指某些标签的样本数量远多于其他标签，这会导致模型偏向于预测常见标签。常见的解决方法包括：</p>
+<ul>
+<li><strong>重采样（Resampling）</strong>：
+<ul>
+<li><strong>上采样少数类</strong>：通过复制少数类样本或合成新样本（如SMOTE）来平衡类之间的样本数量。</li>
+<li><strong>下采样多数类</strong>：减少多数类的样本数量，使其与少数类相匹配，但下采样可能丢失部分有用信息。</li>
+</ul></li>
+<li><strong>代价敏感学习（Cost-Sensitive
+Learning）</strong>：通过为不同类别分配不同的误分类代价，模型可以更加关注少数类。例如，对少数类分配较高的损失权重，迫使模型更好地学习这些类别。</li>
+<li><strong>数据增强（Data
+Augmentation）</strong>：通过数据增强技术（如旋转、翻转、裁剪等）生成更多少数类的样本，以增加其多样性。</li>
+<li><strong>类平衡损失函数（Class-Balanced Loss
+Function）</strong>：使用专门设计的损失函数，例如Focal
+Loss或加权交叉熵损失函数，对少数类和多数类样本的贡献进行重新加权，使模型在训练时不会过度偏向多数类。</li>
+</ul>
+<h2 id="python-中-is-与-的区别">Python 中 is 与 == 的区别</h2>
+<p>因为我给面试官说，我对语言特性不是非常的精通，所以说问一个简单的问题，这个面试题反映出来面试准备中还是需要重视语言部分。</p>
+<p><code>is</code> 运算符：</p>
+<ul>
+<li><strong>作用</strong>：<code>is</code>
+用于比较两个对象的<strong>身份</strong>，即它们在内存中的<strong>引用地址</strong>是否相同。换句话说，<code>is</code>
+判断的是两个变量是否指向同一个对象。</li>
+<li><strong>使用场景</strong>：<code>is</code>
+通常用于检查两个对象是否是同一个实例，或者用于与 <code>None</code>
+进行比较。</li>
+</ul>
+<p><code>==</code> 运算符：</p>
+<ul>
+<li><strong>作用</strong>：<code>==</code>
+用于比较两个对象的<strong>值</strong>，即它们的内容是否相同，而不关心它们是否是同一个对象。</li>
+<li><strong>使用场景</strong>：<code>==</code>
+常用于比较两个变量的内容是否相等，不论它们是否是同一个对象。</li>
+</ul>
+<p>简而言之，<code>is</code>
+比较对象在内存中的地址是否相同，<code>==</code>检查两个对象的内容是否相等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">b = a</span><br><span class="line">c = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">is</span> b)  <span class="comment"># True, 因为 a 和 b 引用的是同一个列表对象</span></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">is</span> c)  <span class="comment"># False, 因为 a 和 c 是不同的列表对象，虽然它们内容相同</span></span><br><span class="line"><span class="built_in">print</span>(a == b)  <span class="comment"># True, 因为 a 和 b 的内容相同</span></span><br><span class="line"><span class="built_in">print</span>(a == c)  <span class="comment"># True, 因为 a 和 c 的内容相同</span></span><br></pre></td></tr></table></figure>
+<p>chat：在一些情况下，特别是比较不可变对象（如整数、小字符串等）时，由于
+Python 的内部优化，可能会出现 <code>is</code> 和 <code>==</code> 都为
+<code>True</code> 的情况（这种情况很难讲），例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1000</span></span><br><span class="line">b = <span class="number">1000</span></span><br><span class="line"><span class="built_in">print</span>(a <span class="keyword">is</span> b)  <span class="comment"># False, 因为它们是不同的对象，但是注意，这里我实际上在 python 3.8 中进行测试，结果是 True</span></span><br><span class="line"><span class="built_in">print</span>(a == b)  <span class="comment"># True, 因为它们的值相同</span></span><br><span class="line"></span><br><span class="line">x = <span class="number">100</span></span><br><span class="line">y = <span class="number">100</span></span><br><span class="line"><span class="built_in">print</span>(x <span class="keyword">is</span> y)  <span class="comment"># True, 因为小整数在 Python 中被缓存，指向相同对象</span></span><br><span class="line"><span class="built_in">print</span>(x == y)  <span class="comment"># True, 因为它们的值相同</span></span><br></pre></td></tr></table></figure>
+<h2 id="resnet-及其后续工作">ResNet 及其后续工作</h2>
+<p>ResNet的主要贡献包括：</p>
+<ol type="1">
+<li><strong>残差学习</strong>：通过引入残差连接，使得网络可以学习输入到输出的残差映射，而不是直接学习映射本身，这有效缓解了梯度消失问题。</li>
+<li><strong>批量归一化</strong>：ResNet还采用了批量归一化（Batch
+Normalization）技术，进一步提高了模型的训练稳定性和性能。</li>
+<li><strong>全局平均池化</strong>：ResNet使用全局平均池化层替代了传统的全连接层，减少了模型参数并提高了泛化能力。</li>
+</ol>
+<p><strong>ResNeXt</strong>：<strong>ResNeXt</strong> 是 ResNet
+的扩展版本，提出了一种叫做“分组卷积”（Grouped
+Convolution）的设计。它通过引入多个并行的卷积路径（即“分支”）来提升模型的表达能力，同时保持参数量的可控性。ResNeXt
+提供了更好的<strong>模块化设计</strong>，使得可以通过简单增加分支数来提高模型的性能。</p>
+<p><strong>Wide ResNet</strong>：<strong>Wide ResNet</strong>
+提出，通过增加网络的宽度（即每层通道数）而非深度，可以减少网络的训练时间，同时保持甚至提升精度。与非常深的网络相比，宽网络在计算效率和收敛速度上具有一定优势。</p>
+<p><strong>DenseNet</strong>：<strong>DenseNet</strong> 是受 ResNet
+启发提出的另一种网络结构，它通过在每一层中连接所有前一层的特征图，使得网络的梯度传递更加顺畅，进一步缓解了梯度消失问题。与
+ResNet 的残差连接不同，DenseNet 采用的是<strong>密集连接（Dense
+Connection）</strong>，每一层都接收所有前面层的输入。</p>
+<p><strong>Res2Net</strong>：<strong>Res2Net</strong> 是对 ResNet
+进一步扩展的版本，它通过将每个残差块内部进行分组，并使不同组之间的特征有级联连接，实现了更细粒度的特征表示，提升了网络的表达能力。</p>
+<p><strong>SENet</strong>：<strong>SENet</strong>
+（Squeeze-and-Excitation
+Network）通过引入<strong>通道注意力机制</strong>，提升了 ResNet
+的表示能力。SENet
+在每个残差块中增加了“压缩”和“激励”操作，使得网络能够自适应地重新调整每个通道的重要性。</p>
+<h2 id="梯度消失与梯度爆炸">梯度消失与梯度爆炸</h2>
+<ol type="1">
+<li>梯度消失：（Vanishing Gradient）：</li>
+</ol>
+<ul>
+<li><strong>定义</strong>：梯度消失是指在反向传播过程中，随着网络层数的增加，梯度逐渐变得非常小，接近于零，导致前面层的权重更新几乎停滞不前，模型难以有效训练。这在深层神经网络中特别常见，尤其是在使用饱和激活函数（如
+sigmoid、tanh）时，梯度的值会随着层数的增加迅速衰减。</li>
+<li><strong>影响</strong>：网络的前面层权重更新变得非常缓慢，网络难以收敛，甚至可能无法训练到有效的参数。</li>
+<li><strong>解决方法</strong>：
+<ul>
+<li><strong>使用 ReLU 激活函数</strong>：
+<ul>
+<li>ReLU（Rectified Linear Unit）激活函数避免了 Sigmoid 或 Tanh
+的饱和区域，它的导数要么为 1（正区域），要么为
+0（负区域），可以在一定程度上减轻梯度消失问题。</li>
+<li>其他 ReLU 的变体如 Leaky ReLU、ELU 也可以用于缓解梯度消失问题</li>
+</ul></li>
+<li><strong>残差网络（ResNet）</strong>：ResNet
+通过引入<strong>跳跃连接（skip
+connections）</strong>，将输入直接传递到后续层，从而有效缓解了梯度消失问题。这使得深层网络的梯度可以更加顺畅地传递。</li>
+<li><strong>LSTM 和 GRU（解决 RNN
+中的梯度消失）</strong>：长短时记忆网络（LSTM）和门控循环单元（GRU）在结构设计上，通过引入门机制控制信息流，能够有效减轻循环神经网络（RNN）中的梯度消失问题</li>
+<li><strong>批归一化（Batch
+Normalization）</strong>：在每一层后添加批归一化层，可以将输入数据归一化，使得数据在训练过程中保持稳定的分布，从而有助于避免梯度的急剧消失。</li>
+<li><strong>权重初始化方法</strong>：使用合适的权重初始化方法（如 Xavier
+初始化或 He
+初始化），能够让初始的激活函数值保持适当的范围，从而避免梯度过小或过大，帮助梯度更好地传递。</li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li>梯度爆炸 Exploding Gradient：</li>
+</ol>
+<ul>
+<li><strong>定义</strong>：梯度爆炸是指在反向传播过程中，随着网络层数的增加，梯度变得非常大，导致前面层的权重更新幅度过大，模型参数不稳定，最终导致梯度无法收敛或参数溢出。在深层网络或循环神经网络（RNN）中，梯度爆炸问题尤其严重，因为梯度在长时间步内累积，容易产生数值溢出。模型训练时权重更新非常不稳定，损失值波动过大，难以收敛。</li>
+<li><strong>解决方法</strong>：
+<ul>
+<li><strong>梯度裁剪（Gradient
+Clipping）</strong>：梯度裁剪是处理梯度爆炸的一种常见方法。通过设置梯度的最大值，当梯度的范数超过设定的阈值时，将梯度进行裁剪，防止其变得过大。例如，在
+RNN 中经常使用梯度裁剪来避免梯度爆炸。</li>
+<li><strong>权重初始化方法</strong>：适当的权重初始化也可以减轻梯度爆炸问题。通过
+Xavier 或 He
+初始化，可以确保权重值不会导致过大的激活函数输出，从而避免梯度过大。</li>
+<li><strong>使用正则化技术</strong>：<strong>L2
+正则化</strong>（权重衰减）通过在损失函数中添加权重的平方和项，能够有效限制权重值的增长，防止梯度爆炸问题的发生。</li>
+<li><strong>使用较小的学习率</strong>：调整学习率可以有效控制权重更新的幅度，使用较小的学习率可以减轻梯度爆炸问题，使模型训练更加稳定。</li>
+<li><strong>批归一化（Batch
+Normalization）</strong>：批归一化除了可以缓解梯度消失问题，也能帮助稳定梯度传递，避免梯度爆炸。它通过将激活值归一化，避免激活值的分布过度偏离，进而保持梯度的稳定性。</li>
+<li>更改激活函数可以缓解，但是不能从根本上解决。</li>
+</ul></li>
+</ul>
+<h2 id="增大感受野的方式">增大感受野的方式</h2>
+<ol type="1">
+<li>使用空洞卷积（不增加计算量，一般在语义分割里面用的比较多，能在保持高分辨率的同时捕获更加广泛的上下文信息·`）</li>
+<li>增加网络深度（会让参数量增多）</li>
+<li>使用较大的卷积核（但是会增大参数量与计算量）</li>
+<li>调整步长（卷积或者池化层）</li>
+<li>空间金字塔池化（SPP）：在不同尺度对特征图进行池化操作。</li>
+<li>小波变换的新型卷积方式（WTConv），级联小波变换和在不同频率带上执行小卷积核的卷积增加感受野。</li>
+<li>下采样降低分辨率。</li>
+</ol>
+<h2 id="diffupps-的工作原理">DiffuPPS 的工作原理</h2>
+<p>这个暂时不能说，论文还没发出来。</p>
+<h2 id="复杂场景下的行人重识别">复杂场景下的行人重识别</h2>
+<p>这个也还暂时不能说。</p>
+<h2 id="有没有关注最新的工作进展">有没有关注最新的工作进展？</h2>
+<p>最近一段时间我主要集中精力在撰写一篇与NLP相关的论文，因此没有太多时间专门关注图像算法领域的最新工作。不过，我一直对该领域保持高度兴趣，之前我有深入研究过[提到一些你熟悉的图像算法领域的工作或模型]。我非常愿意在接下来的时间里迅速跟进最新的研究进展，以确保自己的知识保持前沿。</p>
+<h2 id="fixmatch及其相关工作">FixMatch及其相关工作</h2>
+<p>这个可以参考我另外外一篇有关于半监督分类的博客。</p>
+<h2 id="git-是如何解决冲突的还需要-commit-吗">Git
+是如何解决冲突的，还需要 commit 吗？</h2>
+<p>Git
+冲突的本质：（个人认为）远程库包含了本地库中没有的内容，或者说，本地库的修改基础不是远程库的版本。</p>
+<p>发生冲突后：</p>
+<ol type="1">
+<li>拉取远程仓库内容： <code>git pull</code>，<code>git pull</code>
+等价于 <code>git fetch + git merge</code></li>
+<li>提示存在冲突，进入 <code>MERGING</code>状态</li>
+<li>通过 <code>git status</code> 查看需要修改的文件名</li>
+<li>也可以使用 <code>git diff</code> 查看已经修改的文件的差异</li>
+<li>在文件中进行冲突修改</li>
+<li>待文件修改完成之后，再次执行提交动作，需要包含 <code>add</code>
+<code>commit</code> 两个动作</li>
+<li>提交后使用 <code>git-log</code>
+查看本地库的记录，一般能够看到一个双分支合并在一起</li>
+<li>本地提交完成后即可推送远程代码 <code>git push</code></li>
+</ol>
+<p>没明白这个面试官反问我“解决冲突之后难道还需要再次comit吗？不会产生一个新的提交记录吗”是什么意思。</p>
+<p>貌似还有一种解决冲突的办法：</p>
+<ol type="1">
+<li>本地修改代码后按步骤提交</li>
+<li>推送远程代码失败，需拉取远程库代码</li>
+<li>使用拉取命令“git pull --rebase origin master”</li>
+<li>找到冲突代码人工修改</li>
+<li>重新执行提交动作， (1)git add .<br>
+(2)git commit -m “xxx”<br>
+(3)git rebase --continue (4)git push origin master</li>
+</ol>
+<p>这种<code>rebase</code>方法似乎时不能用在有多个分支的主分支上面的。</p>
+<p>一般来讲，解决冲突比较好的办法：个人认为：</p>
+<ol type="1">
+<li>多分支开发，大家使用PR合并</li>
+<li>提交之前先进行 <code>git pull</code>，杜绝强行覆盖远程仓库</li>
+<li>抢先提交（狗头</li>
+</ol>
+<p>一般来说，我比较赞同第一种，有一个bug修改或者一个功能开发，应该新建分支，而不是在原有分支上直接进行改动，这样也有利于进行测试和规范化。</p>
+<p>预防冲突的办法： 1. 频繁拉取 2. 小步提交 3.
+良好的沟通，了解彼此的工作进展</p>
+<p>复习一些常见的Git指令，见另外一个博客。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-0-%E9%80%9A%E8%AF%86%E4%B8%8E%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/10/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-0-%E9%80%9A%E8%AF%86%E4%B8%8E%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">机器学习-0-通识与基础</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-10-21 22:26:17 / 修改时间：23:06:36" itemprop="dateCreated datePublished" datetime="2024-10-21T22:26:17+08:00">2024-10-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="机器学习概述">机器学习概述</h1>
+<p>机器学习：Machine Learning
+，是让计算机自己从数据中学习规律，并根据所得到的规律对未来的数据进行预测。请注意，这里说的规律，并不是指函数本身，而是函数本身（包含参数）或
+仅参数。</p>
+<p>机器学习包含了聚类、分类、决策树、贝叶斯、神经网络、深度学习很多算法。这其中，神经网络与深度学习之前的方法中，由人设计函数本身，但人并不知道函数中的参数是多少，由机器学习参数；而神经网络与深度学习的厉害之处在于，它不需要人手工设计函数是什么，直接同时学习出函数本身与参数。</p>
+<p>这有什么好处？人很难设计出一种非常复杂的函数，因为人的理解力毕竟是有限的。</p>
+<h1 id="发展历史">发展历史</h1>
+<ul>
+<li>60年代中到70年代末的发展几乎停滞。</li>
+<li>80年代使用神经网络反向传播（BP）算法训练的多参数线性规划（MLP）理念的提出将机器学习带入复兴时期。（第一次浪潮）</li>
+<li>90年代提出的“决策树”（ID3算法），再到后来的支持向量机（SVM）算法，将机器学习从知识驱动转变为数据驱动的思路。（第二次浪潮）</li>
+<li>21世纪初Hinton提出深度学习（Deep
+Learning），使得机器学习研究又从低迷进入蓬勃发展期。（第三次浪潮）</li>
+</ul>
+<figure>
+<img src="/2024/10/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-0-%E9%80%9A%E8%AF%86%E4%B8%8E%E5%9F%BA%E7%A1%80/image-20241021223311137.png" alt="机器学习的发展历史">
+<figcaption aria-hidden="true">机器学习的发展历史</figcaption>
+</figure>
+<h1 id="分类">分类</h1>
+<p>按照学习模式的不同，可以分为：</p>
+<ul>
+<li>监督学习</li>
+<li>半监督学习</li>
+<li>无监督学习</li>
+<li>强化学习</li>
+</ul>
+<figure>
+<img src="/2024/10/21/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-0-%E9%80%9A%E8%AF%86%E4%B8%8E%E5%9F%BA%E7%A1%80/image-20241021225022176.png" alt="机器学习的学习模式分类">
+<figcaption aria-hidden="true">机器学习的学习模式分类</figcaption>
+</figure>
+<h2 id="监督学习">监督学习</h2>
+<p>Supervised Learning
+，从有标签训练数据中学习模型，然后对于某个给定的新数据预测标签。</p>
+<p>有两大类任务：回归与分类。</p>
+<ul>
+<li>回归：预测
+连续的、具体的数值。常见算法：线性回归、Robust回归、Ridge回归、LASSO回归、Elastic
+Net、多项式回归、SGD（随机梯度下降）、多层感知机、随机森林回归、SVM（支持向量机）、回归树、K-NN、Adaboost、神经网络等。</li>
+<li>分类：预测
+不连续的、离散的数值。常见算法：朴素贝叶斯、决策树、SVM（支持向量机）、逻辑回归、KNN、A大boost、神经网络等。</li>
+</ul>
+<h2 id="半监督学习">半监督学习</h2>
+<p>Semi-Supervised Learning
+，利用少量标注数据与大量无标注数据进行学习的模型。</p>
+<p>主要可能有两大类任务：</p>
+<ul>
+<li>分类</li>
+<li>检测</li>
+</ul>
+<p>半监督学习侧重于在有监督的分类算法中加入无标记样本来实现半监督分类。</p>
+<p>常见的半监督学习算法有Pseudo-Label、Π-Model、Temporal
+Ensembling、Mean
+Teacher、VAT、UDA、MixMatch、ReMixMatch、FixMatch等。</p>
+<p>后续看看这个文章
+https://mp.weixin.qq.com/s/kvqic9Qpvnz0BDvrIViZlg</p>
+<h2 id="无监督学习">无监督学习</h2>
+<p>Unsupervised Learning，利用未经过外部标记标签的数据进行训练。</p>
+<p>主要任务：</p>
+<ul>
+<li>关联性分析</li>
+<li>聚类</li>
+<li>降维</li>
+</ul>
+<p>主要的算法有：稀疏自编码（Sparse
+Auto-Encoder）、主成分分析（Principal Component Analysis,
+PCA）、K-Means算法（K均值算法）、DBSCAN算法（Density-Based Spatial
+Clustering of Applications with
+Noise）、最大期望算法（Expectation-Maximization algorithm, EM）等。</p>
+<p>一般，我个人的看法是将<strong>自监督学习</strong>看作是一种特殊的无监督学习，区别在于它首先对数据的一部分进行预测，自行生成训练目标（伪标签）。</p>
+<h2 id="强化学习">强化学习</h2>
+<p>强化学习并没有利用样本数据进行训练，但类似于监督学习，需要与环境（或人）不断交互，在试错中学习。</p>
+<p>在强化学习中，有两个可以进行交互的对象：智能体（Agnet）和环境（Environment），还有四个核心要素：策略（Policy）、回报函数（收益信号，Reward
+Function）、价值函数（Value Function）和环境模型（Environment
+Model），其中环境模型是可选的。</p>
+<p>主要任务：机器人避障、棋牌类游戏、广告和推荐等应用场景中。</p>
+<h1 id="如何应用机器学习">如何应用机器学习？</h1>
+<ol type="1">
+<li>将现实问题抽象为数学问题。如问题“给定图片判断是猫还是狗”归结为“二分类”问题</li>
+<li>数据准备，或下载数据集，或自己标注、整理数据集。将数据集划分为
+训练集（60%）、验证集（20%）、测试集（20%）</li>
+<li>选择模型：根据 <strong>数据类型、样本量、问题本身的性质</strong>
+综合考虑。</li>
+<li>选择合适的损失函数与优化策略、模型训练与评估</li>
+<li>应用训练好的模型、预测结果。</li>
+</ol>
+<h1 id="参考文献">参考文献</h1>
+<p>[1] 数据派THU-公众号</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/17/CV%E9%9D%A2%E7%BB%8F%E6%95%B4%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -253,7 +744,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-10-18 21:13:29" itemprop="dateModified" datetime="2024-10-18T21:13:29+08:00">2024-10-18</time>
+      <time title="修改时间：2024-10-23 11:13:26" itemprop="dateModified" datetime="2024-10-23T11:13:26+08:00">2024-10-23</time>
     </span>
 
   
@@ -263,7 +754,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>6.8k</span>
+      <span>6.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -285,7 +776,8 @@
 <p>这个面经 网上面经 数字图像处理经典方法 自己的项目 机器学习经典方法
 目标检测 RCNN fast RCNN YOLO</p>
 <h1 id="纸质版面经">纸质版面经</h1>
-<p>过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数</p>
+<p>过拟合的处理：数据增广、早停、dropout、正则化、集成模型、ReLU激活函数
+欠拟合的处理方法：模型复杂化、增加特征、调整参数与超参数、增加训练数据一般是没用的、降低正则化约束</p>
 <p>梯度消失：两种说法：一般是选了不合适的激活函数 1.
 靠近输出层的梯度大，收敛快，靠近输入层的梯度小，更新慢，几乎和初始一样。(从深度神经网络角度看)
 2. 连乘小数导致的。（从激活函数角度看）</p>
@@ -390,7 +882,7 @@ Wasserstein距离又叫Earth Mover's Distance(EMD，推土机距离)，参考：
 渐变小。
 而梯度攻击的分类模型参数w不变（分类逻辑不变），y也固定不变，若希望损失函数值变大，就只能修改输入。下面就来看看如何利用梯度方法修改输入数据。</p>
 <p>https://mp.weixin.qq.com/s/rPCuDAYD34SSv9qPVutsNg</p>
-<p>GSM全称是Fast Gradient Sign
+<p>FGSM全称是Fast Gradient Sign
 Method快速梯度下降法。其原理是求模型误差函数对输入的导数，然后用符号函数得到其梯度方向，并乘以一个步长ε，将得到的“扰动”加在原来的输入数据之上就得到了攻击样本。</p>
 <p>FGSM从始至终只做了一次修改，改动的大小依赖步长ε，如果步长太大，则原数据被改得面目全非，如果改动太小又无法骗过模型。一般做干扰的目的是保持数据原始的性质，只为骗过模型，而非完全替换数据。迭代修改的方法PGD，每次进行少量修改，扰动多次</p>
 <h2 id="迁移学习">迁移学习</h2>
@@ -558,6 +1050,21 @@ AdaBoost
 <li>fixmatch 原理</li>
 <li>transformer 计算方法</li>
 <li>BN 层的计算方法，参数量，训练与推理时的区别。</li>
+</ol>
+<h1 id="tplink-算法二面">1022 tplink 算法二面</h1>
+<ol type="1">
+<li>自我介绍</li>
+<li>多标签分类，标签缺失、类别不均衡</li>
+<li>python 中 is 与 == 的区别</li>
+<li>resnet 及其后续工作</li>
+<li>详细询问CUB200项目，方法等等，数据增强</li>
+<li>梯度消失与梯度爆炸</li>
+<li>增大感受野的方法，空洞卷积、增大核面积</li>
+<li>diffusion model 项目的原理与工作</li>
+<li>复杂场景下的行人识别？？？</li>
+<li>fixmatch 标签？</li>
+<li>有没有关注最新的工作进展？</li>
+<li>Git 如何解决冲突，还需要 commit吗？</li>
 </ol>
 
       
@@ -1650,226 +2157,8 @@ pip可以在任何环境中安装包，但是只能安装Python包。
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/14/Leetcode-Array-80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/myavatar.jpg">
-      <meta itemprop="name" content="Duan Yao">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Duan Yao's Blog">
-      <meta itemprop="description" content="SYSU-CS in study.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Duan Yao's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/14/Leetcode-Array-80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B92/" class="post-title-link" itemprop="url">Leetcode-Array-80.删除有序数组中的重复项2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-10-14 13:58:01 / 修改时间：15:38:35" itemprop="dateCreated datePublished" datetime="2024-10-14T13:58:01+08:00">2024-10-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Leetcode/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>316</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="思路">思路</h1>
-<p>重点： - 有序 - 原地删除 - 出现次数超过两次的，保留两次</p>
-<h2 id="暴力解法-计数">暴力解法-计数</h2>
-<p>从头遍历，出现一个新的数，将计数变量清零。当计数变量超过2时，删除这个元素，将后续元素前移.</p>
-<h2 id="快慢指针">快慢指针</h2>
-<p>和 26题目 本质上是类似的。</p>
-<ul>
-<li>使用 slow 指针标记下一个需要被替换的位置，slow
-之前的数列都已经满足要求</li>
-<li>使用 fast 指针找到下一个需要移动到 slow 位置的值</li>
-</ul>
-<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 伪代码</span><br><span class="line">// 使用一个计数变量，使用一个暂存变量（当前正在计数的值）</span><br><span class="line">// 首先初始化slow找到第一个可以代替的位置</span><br><span class="line">// 将 fast 指针初始化为 slow，并向后边计数边寻找，如果计数变量小于2就移动，如果计数变量大于1就只移动right指针</span><br><span class="line">// 每次移动完值之后，将slow与right+1</span><br></pre></td></tr></table></figure>
-<p>突然想到完全没必要使用计数变量，因为是有序的，所以直接使用
-nums[i-2]?=nums[i] 就可以了</p>
-<p>代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.length&lt;=<span class="number">2</span>) <span class="keyword">return</span> nums.length;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> slow=<span class="number">2</span>, fast=<span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(fast&lt;nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[slow-<span class="number">2</span>]!=nums[fast])&#123;<span class="comment">// 快指针</span></span><br><span class="line">                nums[slow]=nums[fast];</span><br><span class="line">                ++slow;</span><br><span class="line">            &#125;</span><br><span class="line">            ++fast;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> slow;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/14/Leetcode-Array-26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/myavatar.jpg">
-      <meta itemprop="name" content="Duan Yao">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Duan Yao's Blog">
-      <meta itemprop="description" content="SYSU-CS in study.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Duan Yao's Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2024/10/14/Leetcode-Array-26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="post-title-link" itemprop="url">Leetcode-Array-26.删除有序数组中的重复项</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2024-10-14 11:17:15 / 修改时间：14:13:44" itemprop="dateCreated datePublished" datetime="2024-10-14T11:17:15+08:00">2024-10-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
-        </span>
-          ，
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Leetcode/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>156</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>https://leetcode.cn/problems/remove-duplicates-from-sorted-array/?envType=study-plan-v2&amp;envId=top-interview-150</p>
-<h1 id="思路">思路</h1>
-<p>重点：非严格递增、原地删除、相对顺序一致</p>
-<p>使用双指针，left 指针表示当前去重结果，right
-指针找到下一个替换位置。因为要保持相对顺序，我们从左向右查找</p>
-<p>伪代码： <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">left=1 right=1</span><br><span class="line">while right&lt;len:</span><br><span class="line">    if nums[left-1]==nums[right]:</span><br><span class="line">        right++</span><br><span class="line">    else: </span><br><span class="line">        swap(nums[left],nums[right])</span><br><span class="line">        left++;right++;</span><br><span class="line">return left</span><br></pre></td></tr></table></figure></p>
-<p>代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">removeDuplicates</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span><span class="number">1</span>,right=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(right&lt;nums.length)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[left-<span class="number">1</span>]==nums[right])&#123;</span><br><span class="line">                right++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">              <span class="comment">// 这里没必要交换</span></span><br><span class="line">                <span class="comment">// int temp=nums[left];</span></span><br><span class="line">                nums[left]=nums[right];</span><br><span class="line">                <span class="comment">// nums[right]=temp;</span></span><br><span class="line">                right++;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -1891,13 +2180,13 @@ nums[i-2]?=nums[i] 就可以了</p>
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">16k</span>
+    <span title="站点总字数">26k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">59 分钟</span>
+    <span title="站点阅读时长">1:36</span>
   </span>
 </div>
 <div class="busuanzi-count">
