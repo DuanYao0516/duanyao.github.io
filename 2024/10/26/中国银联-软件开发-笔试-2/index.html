@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/d.png">
+  <link rel="mask-icon" href="/images/d.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="买古董 小明在古董市场上用手中的m元买东西，古董编号从0-10^9，编号&#x3D;价格，小明手里已经有n件，小明不会重复购买，每件物品最多持有一个。帮小明计算手里的m元还能购买多少件？ 输入 ： 第一行：小明已经拥有的股东数目n和手上的金额m 第二行：小明已经拥有的古董编号，每个编号以空格隔开，总共n个编号。 输出：小明以手里的m元还能买多少件古董。 123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中国银联-软件开发-笔试">
+<meta property="og:url" content="http://example.com/2024/10/26/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%81%94-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91-%E7%AC%94%E8%AF%95-2/index.html">
+<meta property="og:site_name" content="Duan Yao&#39;s Blog">
+<meta property="og:description" content="买古董 小明在古董市场上用手中的m元买东西，古董编号从0-10^9，编号&#x3D;价格，小明手里已经有n件，小明不会重复购买，每件物品最多持有一个。帮小明计算手里的m元还能购买多少件？ 输入 ： 第一行：小明已经拥有的股东数目n和手上的金额m 第二行：小明已经拥有的古董编号，每个编号以空格隔开，总共n个编号。 输出：小明以手里的m元还能买多少件古董。 123456789101112131415">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-26T06:09:47.000Z">
+<meta property="article:modified_time" content="2024-10-28T04:19:02.188Z">
+<meta property="article:author" content="Duan Yao">
+<meta property="article:tag" content="笔试">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/10/26/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%81%94-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91-%E7%AC%94%E8%AF%95-2/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/26/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%81%94-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91-%E7%AC%94%E8%AF%95-2/","path":"2024/10/26/中国银联-软件开发-笔试-2/","title":"中国银联-软件开发-笔试"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>中国银联-软件开发-笔试 | Duan Yao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Duan Yao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">思无涯，行无疆，言无忌，行无羁</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B9%B0%E5%8F%A4%E8%91%A3"><span class="nav-number">1.</span> <span class="nav-text">买古董</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%83%E6%A1%83%E5%AD%90%E7%9A%84%E6%9C%80%E5%B0%8F%E9%87%8D%E9%87%8F"><span class="nav-number">2.</span> <span class="nav-text">吃桃子的最小重量</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Duan Yao"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Duan Yao</p>
+  <div class="site-description" itemprop="description">SYSU-CS in study.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DuanYao0516" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DuanYao0516" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:duanyao0516@163.com" title="E-Mail → mailto:duanyao0516@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/duan-yao" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener me" target="_blank">Gitee</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://gitee.com/duan-yao" title="https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener" target="_blank">Gitee</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/26/%E4%B8%AD%E5%9B%BD%E9%93%B6%E8%81%94-%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91-%E7%AC%94%E8%AF%95-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="中国银联-软件开发-笔试 | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          中国银联-软件开发-笔试
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-10-26 14:09:47" itemprop="dateCreated datePublished" datetime="2024-10-26T14:09:47+08:00">2024-10-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-28 12:19:02" itemprop="dateModified" datetime="2024-10-28T12:19:02+08:00">2024-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/" itemprop="url" rel="index"><span itemprop="name">面试记录</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/%E7%AC%94%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">笔试</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>863</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="买古董">买古董</h1>
+<p>小明在古董市场上用手中的m元买东西，古董编号从0-10^9，编号=价格，小明手里已经有n件，小明不会重复购买，每件物品最多持有一个。帮小明计算手里的m元还能购买多少件？</p>
+<p>输入 ：</p>
+<p>第一行：小明已经拥有的股东数目n和手上的金额m</p>
+<p>第二行：小明已经拥有的古董编号，每个编号以空格隔开，总共n个编号。</p>
+<p>输出：小明以手里的m元还能买多少件古董。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">calculate_purchasable_antiques</span>(<span class="params">n, m, owned_ids</span>):</span><br><span class="line">    owned_set = <span class="built_in">set</span>(owned_ids)  <span class="comment"># 将已拥有的古董编号放入集合</span></span><br><span class="line">    purchasable_count = <span class="number">0</span>       <span class="comment"># 可购买古董数量初始化为0</span></span><br><span class="line">    current_price = <span class="number">0</span>           <span class="comment"># 起始编号为0的古董</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 依次尝试购买古董，直到金额不够或达到编号范围为止</span></span><br><span class="line">    <span class="keyword">while</span> m &gt;= current_price <span class="keyword">and</span> current_price &lt;= <span class="number">10</span>**<span class="number">9</span>:</span><br><span class="line">        <span class="keyword">if</span> current_price <span class="keyword">not</span> <span class="keyword">in</span> owned_set:  <span class="comment"># 该编号的古董小明未拥有</span></span><br><span class="line">            <span class="keyword">if</span> m &gt;= current_price:  <span class="comment"># 检查金额是否足够</span></span><br><span class="line">                m -= current_price  <span class="comment"># 扣除金额</span></span><br><span class="line">                purchasable_count += <span class="number">1</span>  <span class="comment"># 增加可购买数量</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">break</span>  <span class="comment"># 金额不足，退出循环</span></span><br><span class="line">        current_price += <span class="number">1</span>  <span class="comment"># 尝试购买下一个编号的古董</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> purchasable_count</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取输入</span></span><br><span class="line">n, m = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())  <span class="comment"># 第一行：小明已拥有的古董数量和手上的金额</span></span><br><span class="line">owned_ids = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))  <span class="comment"># 第二行：小明已拥有的古董编号列表</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算小明可以购买的古董数量</span></span><br><span class="line">result = calculate_purchasable_antiques(n, m, owned_ids)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br></pre></td></tr></table></figure>
+<h1 id="吃桃子的最小重量">吃桃子的最小重量</h1>
+<p>这个题意不是非常明确。我没看明白题目意思。</p>
+<p>小明在桌子上放了一排桃子，吃掉其中一个时，会同时吃掉相邻两个，否则宁可不吃。桃子重量不相同。怎么样才能使吃到的桃子总重量最少。</p>
+<p>输入：</p>
+<p>第一行，一个整数n，表示桃子总数</p>
+<p>第二行，一个整数数组，表示桃子的不同重量</p>
+<p>输出：一个整数，表示所吃桃子的最小总重量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">minWeight</span>(<span class="params">n, weights</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> weights[<span class="number">0</span>]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 初始化动态规划数组</span></span><br><span class="line">    dp = [[<span class="number">0</span>] * (n + <span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 状态转移</span></span><br><span class="line">    <span class="keyword">for</span> length <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, n + <span class="number">1</span>):  <span class="comment"># 长度从3开始，因为至少需要3个桃子才能吃一个</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n - length + <span class="number">2</span>):  <span class="comment"># 从第1个桃子开始，确保有长度的空间</span></span><br><span class="line">            j = i + length - <span class="number">1</span>  <span class="comment"># 计算结束位置</span></span><br><span class="line">            dp[i][j] = <span class="built_in">float</span>(<span class="string">&#x27;inf&#x27;</span>)</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(i, j - <span class="number">1</span>):  <span class="comment"># 选择一个位置k来吃桃子</span></span><br><span class="line">                dp[i][j] = <span class="built_in">min</span>(dp[i][j], dp[i][k] + dp[k + <span class="number">2</span>][j] + weights[i - <span class="number">1</span>] + weights[k] + weights[j])</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> dp[<span class="number">1</span>][n]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输入</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>().strip())  <span class="comment"># 桃子总数</span></span><br><span class="line">weights = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().strip().split()))  <span class="comment"># 桃子的重量</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出</span></span><br><span class="line"><span class="built_in">print</span>(minWeight(n, weights))</span><br></pre></td></tr></table></figure>
+<p>或者 GPT 的答案：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">min_weight_to_eat</span>(<span class="params">n, weights</span>):</span><br><span class="line">    <span class="keyword">if</span> n &lt; <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>  <span class="comment"># 如果桃子少于3个，无法满足“吃掉相邻两个”的条件</span></span><br><span class="line"></span><br><span class="line">    total_weight = <span class="number">0</span>  <span class="comment"># 用于累加最小吃掉的桃子总重量</span></span><br><span class="line">    eaten = [<span class="literal">False</span>] * n  <span class="comment"># 记录每个桃子是否已被吃掉</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n - <span class="number">1</span>):</span><br><span class="line">        <span class="comment"># 仅考虑还未吃掉的桃子及其相邻桃子</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> eaten[i - <span class="number">1</span>] <span class="keyword">and</span> <span class="keyword">not</span> eaten[i] <span class="keyword">and</span> <span class="keyword">not</span> eaten[i + <span class="number">1</span>]:</span><br><span class="line">            <span class="comment"># 吃掉中间桃子，同时标记相邻桃子已被吃掉</span></span><br><span class="line">            total_weight += weights[i]</span><br><span class="line">            eaten[i - <span class="number">1</span>] = eaten[i] = eaten[i + <span class="number">1</span>] = <span class="literal">True</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> total_weight</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取输入</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())  <span class="comment"># 第一行：桃子总数</span></span><br><span class="line">weights = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))  <span class="comment"># 第二行：桃子不同重量数组</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算并输出最小吃掉的桃子总重量</span></span><br><span class="line">result = min_weight_to_eat(n, weights)</span><br><span class="line"><span class="built_in">print</span>(result)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AC%94%E8%AF%95/" rel="tag"><i class="fa fa-tag"></i> 笔试</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/25/Java-Basic-3-JVM%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B/" rel="prev" title="Java-Basic-JVM内存模型">
+                  <i class="fa fa-angle-left"></i> Java-Basic-JVM内存模型
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/10/26/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA-3-%E5%8D%9A%E5%AE%A2%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9A%90%E8%97%8F/" rel="next" title="Hexo博客搭建-3-博客加密与隐藏">
+                  Hexo博客搭建-3-博客加密与隐藏 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Duan Yao</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">46k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:46</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","single_dollars":true,"cjk_width":0.9,"normal_width":0.6,"append_css":true,"every_page":false,"packages":null,"extension_options":{},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

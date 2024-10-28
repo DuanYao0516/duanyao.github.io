@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/d.png">
+  <link rel="mask-icon" href="/images/d.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="线程与进程 进程：程序的一次执行过程，资源分配的基本单位。 线程：CPU 调度的基本单位。拥有自己的 程序计数器、虚拟机栈、本地方法栈。而对于 堆、字符串常量池 是线程共享的  用户线程：由用户空间程序管理和调度的线程，运行在用户空间（专门给应用程序使用）。 内核线程：由操作系统内核管理和调度的线程，运行在内核空间（只有内核程序可以访问）。  创建 一般说有三种或者多种创建线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-面试-并发-1">
+<meta property="og:url" content="http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91-1/index.html">
+<meta property="og:site_name" content="Duan Yao&#39;s Blog">
+<meta property="og:description" content="线程与进程 进程：程序的一次执行过程，资源分配的基本单位。 线程：CPU 调度的基本单位。拥有自己的 程序计数器、虚拟机栈、本地方法栈。而对于 堆、字符串常量池 是线程共享的  用户线程：由用户空间程序管理和调度的线程，运行在用户空间（专门给应用程序使用）。 内核线程：由操作系统内核管理和调度的线程，运行在内核空间（只有内核程序可以访问）。  创建 一般说有三种或者多种创建线程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-27T06:54:14.000Z">
+<meta property="article:modified_time" content="2024-10-27T14:08:44.126Z">
+<meta property="article:author" content="Duan Yao">
+<meta property="article:tag" content="博客">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91-1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91-1/","path":"2024/10/27/Java-面试-并发-1/","title":"Java-面试-并发-1"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-面试-并发-1 | Duan Yao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Duan Yao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">思无涯，行无疆，言无忌，行无羁</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BA%BF%E7%A8%8B%E4%B8%8E%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">线程与进程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA"><span class="nav-number">1.1.</span> <span class="nav-text">创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C"><span class="nav-number">1.1.1.</span> <span class="nav-text">1. 返回结果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="nav-number">1.1.2.</span> <span class="nav-text">2. 异常处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.1.3.</span> <span class="nav-text">3. 使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E5%88%B0%E7%BA%BF%E7%A8%8B%E6%B1%A0%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="nav-number">1.1.4.</span> <span class="nav-text">4. 提交到线程池的处理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.5.</span> <span class="nav-text">示例代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.1.6.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8A%B6%E6%80%81"><span class="nav-number">1.2.</span> <span class="nav-text">状态</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#blocked%E9%98%BB%E5%A1%9E%E7%8A%B6%E6%80%81"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. BLOCKED（阻塞状态）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#waiting%E7%AD%89%E5%BE%85%E7%8A%B6%E6%80%81"><span class="nav-number">1.2.2.</span> <span class="nav-text">2. WAITING（等待状态）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timed_waiting%E8%B6%85%E6%97%B6%E7%AD%89%E5%BE%85%E7%8A%B6%E6%80%81"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.
+TIMED_WAITING（超时等待状态）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E8%BD%AC%E6%8D%A2%E6%80%BB%E7%BB%93"><span class="nav-number">1.2.4.</span> <span class="nav-text">状态转换总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sleep-wait"><span class="nav-number">1.3.</span> <span class="nav-text">sleep wait</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%9A%E7%BA%BF%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">多线程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C"><span class="nav-number">2.1.</span> <span class="nav-text">并发与并行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8C%E6%AD%A5%E4%B8%8E%E5%BC%82%E6%AD%A5"><span class="nav-number">2.2.</span> <span class="nav-text">同步与异步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cpu%E5%AF%86%E9%9B%86%E5%9E%8B%E4%B8%8Eio%E5%AF%86%E9%9B%86%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">CPU密集型与IO密集型</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%BB%E9%94%81"><span class="nav-number">3.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E9%98%B2"><span class="nav-number">3.1.</span> <span class="nav-text">预防</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%BF%E5%85%8D"><span class="nav-number">3.2.</span> <span class="nav-text">避免</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B"><span class="nav-number">3.3.</span> <span class="nav-text">检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B6%88%E9%99%A4"><span class="nav-number">3.4.</span> <span class="nav-text">消除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E7%BA%BF%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">虚拟线程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jmm-jvm%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="nav-number">5.</span> <span class="nav-text">JMM JVM内存模型</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Duan Yao"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Duan Yao</p>
+  <div class="site-description" itemprop="description">SYSU-CS in study.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DuanYao0516" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DuanYao0516" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:duanyao0516@163.com" title="E-Mail → mailto:duanyao0516@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/duan-yao" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener me" target="_blank">Gitee</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://gitee.com/duan-yao" title="https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener" target="_blank">Gitee</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%B9%B6%E5%8F%91-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-面试-并发-1 | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java-面试-并发-1
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-10-27 14:54:14 / 修改时间：22:08:44" itemprop="dateCreated datePublished" datetime="2024-10-27T14:54:14+08:00">2024-10-27</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="线程与进程">线程与进程</h1>
+<p>进程：程序的一次执行过程，资源分配的基本单位。</p>
+<p>线程：CPU 调度的基本单位。拥有自己的
+<strong>程序计数器、虚拟机栈、本地方法栈</strong>。而对于
+<strong>堆、字符串常量池</strong> 是线程共享的</p>
+<ul>
+<li>用户线程：由用户空间程序管理和调度的线程，运行在用户空间（专门给应用程序使用）。</li>
+<li>内核线程：由操作系统内核管理和调度的线程，运行在内核空间（只有内核程序可以访问）。</li>
+</ul>
+<h2 id="创建">创建</h2>
+<p>一般说有三种或者多种创建线程的方式，实际本质上只有一种
+<code>new Thread().start()</code> <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/NspUsyhEmKnJ-4OprRFp9g">大家都说Java有三种创建线程的方式！并发编程中的惊天骗局！</a></p>
+<blockquote>
+<p>Java Runnable 与 Callable 的区别是什么？</p>
+<p><code>Runnable</code> 和 <code>Callable</code> 是 Java
+中用于并发编程的两个接口，它们都可以被线程执行，但有以下几个关键区别：</p>
+<h3 id="返回结果">1. 返回结果</h3>
+<ul>
+<li><p><strong><code>Runnable</code></strong>:
+不返回结果。<code>Runnable</code> 的 <code>run()</code> 方法是
+<code>void</code>，所以它不能返回任何结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Runnable</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong><code>Callable</code></strong>:
+可以返回结果。<code>Callable</code> 的 <code>call()</code>
+方法返回一个泛型结果，可以用 <code>Future</code> 获取返回值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Callable</span>&lt;V&gt; &#123;</span><br><span class="line">    V <span class="title function_">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="异常处理">2. 异常处理</h3>
+<ul>
+<li><p><strong><code>Runnable</code></strong>:
+不能抛出检查异常（<code>Checked Exception</code>），只能通过
+<code>try-catch</code> 语句捕获和处理异常。</p></li>
+<li><p><strong><code>Callable</code></strong>:
+可以抛出检查异常，<code>call()</code> 方法声明了
+<code>throws Exception</code>，允许抛出异常以便调用者处理。</p></li>
+</ul>
+<h3 id="使用场景">3. 使用场景</h3>
+<ul>
+<li><p><strong><code>Runnable</code></strong>:
+适用于不需要返回结果的任务，例如在后台运行一个任务或执行一些更新操作。</p></li>
+<li><p><strong><code>Callable</code></strong>:
+适用于需要返回结果或可能抛出异常的任务，比如计算结果或获取数据。</p></li>
+</ul>
+<h3 id="提交到线程池的处理方式">4. 提交到线程池的处理方式</h3>
+<ul>
+<li><p><strong><code>Runnable</code></strong>: 可以通过
+<code>ExecutorService.submit(Runnable)</code> 提交，返回一个
+<code>Future&lt;?&gt;</code> 对象，但 <code>Future.get()</code>
+的结果始终为 <code>null</code>。</p></li>
+<li><p><strong><code>Callable</code></strong>: 通过
+<code>ExecutorService.submit(Callable&lt;V&gt;)</code>
+提交，返回一个带结果的 <code>Future&lt;V&gt;</code>，可以通过
+<code>Future.get()</code> 获取 <code>Callable</code>
+返回的结果。</p></li>
+</ul>
+<h3 id="示例代码">示例代码</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 使用 Runnable</span></span><br><span class="line"><span class="type">Runnable</span> <span class="variable">runnableTask</span> <span class="operator">=</span> () -&gt; System.out.println(<span class="string">&quot;Runnable task running&quot;</span>);</span><br><span class="line"><span class="type">ExecutorService</span> <span class="variable">executor</span> <span class="operator">=</span> Executors.newFixedThreadPool(<span class="number">1</span>);</span><br><span class="line">executor.submit(runnableTask);  <span class="comment">// 提交任务，无返回值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用 Callable</span></span><br><span class="line">Callable&lt;String&gt; callableTask = () -&gt; <span class="string">&quot;Callable task result&quot;</span>;</span><br><span class="line">Future&lt;String&gt; future = executor.submit(callableTask);  <span class="comment">// 提交任务，有返回值</span></span><br><span class="line">System.out.println(<span class="string">&quot;Callable result: &quot;</span> + future.get());</span><br><span class="line">executor.shutdown();</span><br></pre></td></tr></table></figure>
+<h3 id="总结">总结</h3>
+<ul>
+<li><strong><code>Runnable</code></strong>：不返回结果、不能抛出检查异常，适用于简单任务。</li>
+<li><strong><code>Callable</code></strong>：可返回结果、可以抛出检查异常，适合需要返回值或异常处理的任务。</li>
+</ul>
+</blockquote>
+<h2 id="状态">状态</h2>
+<p>关于状态，JVM有六种</p>
+<ol type="1">
+<li>NEW：创建出来但是还<strong>没有调用</strong> <code>start</code></li>
+<li>RUNNABLE：可运行，实际上包含了 <strong>运行态与就绪态</strong></li>
+<li>BLOCKED： 进入临界区等待锁的释放</li>
+<li>WAITING：无限期等待，不能自动恢复，只能被其他线程唤醒</li>
+<li>TIME_WAITING：有限期，能自动恢复</li>
+<li>TERMINATED：终止</li>
+</ol>
+<blockquote>
+<p>在 Java 中，JVM 对线程状态的区分通过 <code>Thread.State</code>
+枚举，其中 <code>BLOCKED</code>、<code>WAITING</code> 和
+<code>TIMED_WAITING</code> 是三种不同的等待状态：</p>
+<h3 id="blocked阻塞状态">1. <strong>BLOCKED</strong>（阻塞状态）</h3>
+<ul>
+<li><strong>含义</strong>：线程尝试获取一个由其他线程持有的锁（<code>synchronized</code>
+块或方法）时进入此状态。线程在进入临界区前会处于 <code>BLOCKED</code>
+状态，直到该锁释放并获取成功后，线程才可以继续执行。</li>
+<li><strong>触发条件</strong>：一个线程在进入 <code>synchronized</code>
+块或方法时，发现锁已被其他线程持有时，进入 <code>BLOCKED</code>
+状态。</li>
+<li><strong>恢复条件</strong>：一旦锁被释放，<code>BLOCKED</code>
+状态的线程有机会获取锁并继续执行。</li>
+</ul>
+<h3 id="waiting等待状态">2. <strong>WAITING</strong>（等待状态）</h3>
+<ul>
+<li><strong>含义</strong>：线程在等待其他线程的通知或中断，不会自动返回。它只能被显式唤醒（例如，通过另一个线程调用
+<code>notify()</code> 或 <code>notifyAll()</code> 方法）。</li>
+<li><strong>触发条件</strong>：以下方法会让线程进入 <code>WAITING</code>
+状态：
+<ul>
+<li><code>Object.wait()</code> 方法（不带超时参数）</li>
+<li><code>Thread.join()</code> 方法（不带超时参数）</li>
+<li><code>LockSupport.park()</code> 方法</li>
+</ul></li>
+<li><strong>恢复条件</strong>：必须由其他线程调用相应的唤醒方法，如
+<code>notify()</code> 或 <code>notifyAll()</code>，或在
+<code>join()</code> 时等待的线程结束。</li>
+</ul>
+<h3 id="timed_waiting超时等待状态">3.
+<strong>TIMED_WAITING</strong>（超时等待状态）</h3>
+<ul>
+<li><strong>含义</strong>：线程在等待一段时间后将自动返回，不需要被其他线程显式唤醒。该状态适合有超时时间要求的任务或等待。</li>
+<li><strong>触发条件</strong>：以下方法会让线程进入
+<code>TIMED_WAITING</code> 状态：
+<ul>
+<li><code>Thread.sleep(long millis)</code> 方法</li>
+<li><code>Object.wait(long timeout)</code> 方法（带超时参数）</li>
+<li><code>Thread.join(long millis)</code> 方法（带超时参数）</li>
+<li><code>LockSupport.parkNanos(long nanos)</code> 方法</li>
+<li><code>LockSupport.parkUntil(long deadline)</code> 方法</li>
+</ul></li>
+<li><strong>恢复条件</strong>：时间到达后自动返回到
+<code>RUNNABLE</code>
+状态，或在到期前被其他线程唤醒（例如通过中断）。</li>
+</ul>
+<h3 id="状态转换总结">状态转换总结</h3>
+<ul>
+<li><code>BLOCKED</code>：线程等待锁释放。</li>
+<li><code>WAITING</code>：线程等待其他线程的通知或中断，无限期等待。</li>
+<li><code>TIMED_WAITING</code>：线程在等待超时后自动返回，无需显式唤醒。</li>
+</ul>
+</blockquote>
+<h2 id="sleep-wait">sleep wait</h2>
+<p><code>Thread.sleep()</code> 和 <code>object.wait()</code></p>
+<p>共同点：都能暂停线程</p>
+<p>不同：</p>
+<ol type="1">
+<li>前者没有释放锁，后者释放锁</li>
+<li>前者是 Thread 的静态本地方法，后者是 Object 类的本地方法。</li>
+</ol>
+<h1 id="多线程">多线程</h1>
+<h2 id="并发与并行">并发与并行</h2>
+<p>并发：同一时间段内</p>
+<p>并行：同一时刻</p>
+<h2 id="同步与异步">同步与异步</h2>
+<p>同步：调用后被迫原地等待</p>
+<p>异步：调用后继续执行，不用等待</p>
+<h2 id="cpu密集型与io密集型">CPU密集型与IO密集型</h2>
+<p>单核CPU上使用多线程不一定快。</p>
+<ul>
+<li>CPU
+密集型：太多线程会导致频繁的线程上下文切换，增加了开销，降低了效率。</li>
+<li>IO 密集型：多线程可以利用等待 IO 的空闲时间，提高效率。</li>
+</ul>
+<h1 id="死锁">死锁</h1>
+<p>线程持有并等待资源，被无限期阻塞，程序无法正常终止。</p>
+<p>死锁的四个条件：</p>
+<ol type="1">
+<li>互斥条件：一个萝卜一个坑，一个资源一个线程</li>
+<li>请求并保持条件：吃着碗里的想着锅里的</li>
+<li>不剥夺条件：谁也不能抢走我碗里的</li>
+<li>循环等待条件：我想要你碗里的，你想要我碗里的</li>
+</ol>
+<h2 id="预防">预防</h2>
+<ol type="1">
+<li>破坏请求保持：一次性申请资源</li>
+<li>破坏不剥夺：主动释放对方手里的</li>
+<li>破坏循环等待：按顺序申请，相反顺序释放。</li>
+</ol>
+<h2 id="避免">避免</h2>
+<p>资源分配时借助算法堆资源分配进行估算，使其进入安全状态。银行家算法</p>
+<p>安全状态：存在一种资源分配顺序，使得系统按序分配后，所有线程都可以顺利满足。</p>
+<h2 id="检测">检测</h2>
+<p>一些Java 工具</p>
+<h2 id="消除">消除</h2>
+<h1 id="虚拟线程">虚拟线程</h1>
+<p>就是JDK中使用多个线程对应于一个操作系统线程。</p>
+<p>JDK 的线程更加轻量化。</p>
+<p>能够在 IO
+密集场景下，提高处理速度。减少县城资源的额创建以及上下文的切换。</p>
+<h1 id="jmm-jvm内存模型">JMM JVM内存模型</h1>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E9%9B%86%E5%90%88-1/" rel="prev" title="Java-面试-集合-1">
+                  <i class="fa fa-angle-left"></i> Java-面试-集合-1
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/10/27/Java-%E9%9D%A2%E8%AF%95-IO-2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="next" title="Java-面试-IO-2-设计模式">
+                  Java-面试-IO-2-设计模式 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Duan Yao</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">46k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:46</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","single_dollars":true,"cjk_width":0.9,"normal_width":0.6,"append_css":true,"every_page":false,"packages":null,"extension_options":{},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>

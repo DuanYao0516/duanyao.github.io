@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/d.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/d.png">
+  <link rel="mask-icon" href="/images/d.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha256-5eIC48iZUHmSlSUz9XtjRyK2mzQkHScZY1WdMaoz74E=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.21.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"show_result":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="三种机制缓解并发 我在项目中同时使用了Redis 缓存、Nginx 反向代理和 Thymeleaf 模板 来保证较高的并发。 这几种机制对于一个请求的相应顺序：  当客户端向服务器请求一个页面时，依次经过 Nginx 反向代理、Redis 缓存、Spring Boot 服务器和Thymeleaf 模板引擎进行响应。以下是详细的顺序和流程：  Nginx 反向代理：  初始入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java-面试-开发工具-1-Nginx">
+<meta property="og:url" content="http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-1-Nginx/index.html">
+<meta property="og:site_name" content="Duan Yao&#39;s Blog">
+<meta property="og:description" content="三种机制缓解并发 我在项目中同时使用了Redis 缓存、Nginx 反向代理和 Thymeleaf 模板 来保证较高的并发。 这几种机制对于一个请求的相应顺序：  当客户端向服务器请求一个页面时，依次经过 Nginx 反向代理、Redis 缓存、Spring Boot 服务器和Thymeleaf 模板引擎进行响应。以下是详细的顺序和流程：  Nginx 反向代理：  初始入">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-27T13:47:34.000Z">
+<meta property="article:modified_time" content="2024-10-27T14:00:28.935Z">
+<meta property="article:author" content="Duan Yao">
+<meta property="article:tag" content="面试">
+<meta property="article:tag" content="Nginx">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-1-Nginx/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-1-Nginx/","path":"2024/10/27/Java-面试-开发工具-1-Nginx/","title":"Java-面试-开发工具-1-Nginx"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Java-面试-开发工具-1-Nginx | Duan Yao's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Duan Yao's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">思无涯，行无疆，言无忌，行无羁</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89%E7%A7%8D%E6%9C%BA%E5%88%B6%E7%BC%93%E8%A7%A3%E5%B9%B6%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">三种机制缓解并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E7%9A%84%E9%A1%BA%E5%BA%8F%E7%A4%BA%E6%84%8F%E5%9B%BE"><span class="nav-number">1.0.1.</span> <span class="nav-text">具体的顺序示意图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E6%80%BB%E7%BB%93"><span class="nav-number">1.0.2.</span> <span class="nav-text">流程总结</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95"><span class="nav-number">2.</span> <span class="nav-text">测试</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="nav-number">3.</span> <span class="nav-text">安全性</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Duan Yao"
+      src="/images/myavatar.jpg">
+  <p class="site-author-name" itemprop="name">Duan Yao</p>
+  <div class="site-description" itemprop="description">SYSU-CS in study.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/DuanYao0516" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;DuanYao0516" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:duanyao0516@163.com" title="E-Mail → mailto:duanyao0516@163.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/duan-yao" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener me" target="_blank">Gitee</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://gitee.com/duan-yao" title="https:&#x2F;&#x2F;gitee.com&#x2F;duan-yao" rel="noopener" target="_blank">Gitee</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7-1-Nginx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/myavatar.jpg">
+      <meta itemprop="name" content="Duan Yao">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Duan Yao's Blog">
+      <meta itemprop="description" content="SYSU-CS in study.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Java-面试-开发工具-1-Nginx | Duan Yao's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Java-面试-开发工具-1-Nginx
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-10-27 21:47:34 / 修改时间：22:00:28" itemprop="dateCreated datePublished" datetime="2024-10-27T21:47:34+08:00">2024-10-27</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>759</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="三种机制缓解并发">三种机制缓解并发</h1>
+<p>我在项目中同时使用了Redis 缓存、Nginx 反向代理和 Thymeleaf 模板
+来保证较高的并发。</p>
+<p>这几种机制对于一个请求的相应顺序：</p>
+<blockquote>
+<p>当客户端向服务器请求一个页面时，依次经过 <strong>Nginx
+反向代理</strong>、<strong>Redis 缓存</strong>、<strong>Spring Boot
+服务器</strong>和<strong>Thymeleaf
+模板引擎</strong>进行响应。以下是详细的顺序和流程：</p>
+<ol type="1">
+<li><strong>Nginx 反向代理</strong>：
+<ul>
+<li><strong>初始入口</strong>：客户端的请求首先到达 Nginx。Nginx
+检查请求类型和 URL 路径。</li>
+<li><strong>静态资源处理</strong>：如果请求的是静态资源（如
+CSS、JS、图片），Nginx 直接从其缓存中提供响应，避免请求进入服务器。</li>
+<li><strong>反向代理转发</strong>：对于动态页面请求（如博客帖子页面），Nginx
+将请求转发给后端的 Spring Boot 服务器。</li>
+</ul></li>
+<li><strong>Redis 缓存</strong>：
+<ul>
+<li><strong>缓存检查</strong>：Spring Boot 服务器接收到请求后，会先查找
+Redis 缓存中是否已有该页面的数据。</li>
+<li><strong>命中缓存</strong>：如果缓存中有页面数据，Spring Boot
+服务器会直接从 Redis 获取页面内容，并立即返回给
+Nginx，从而快速响应客户端请求。</li>
+<li><strong>未命中缓存</strong>：若 Redis 中没有找到页面数据，Spring
+Boot 服务器将进入下一步，由 Thymeleaf 模板引擎来渲染页面。</li>
+</ul></li>
+<li><strong>Thymeleaf 模板渲染</strong>：
+<ul>
+<li><strong>数据准备</strong>：Spring Boot
+从数据库或其他服务中获取页面所需的数据。</li>
+<li><strong>模板渲染</strong>：将获取到的数据传递给 Thymeleaf
+模板引擎进行动态渲染，将数据填充到 HTML 模板中，生成完整的 HTML
+页面。</li>
+<li><strong>缓存更新</strong>：渲染完成的页面数据可以被缓存到
+Redis，以便下次请求直接从缓存获取，减少渲染时间。</li>
+</ul></li>
+<li><strong>返回响应</strong>：
+<ul>
+<li><strong>发送至 Nginx</strong>：生成的响应页面返回到 Nginx。</li>
+<li><strong>响应客户端</strong>：Nginx 将最终的 HTML
+页面发送给客户端，从而完成请求-响应流程。</li>
+</ul></li>
+</ol>
+<h3 id="具体的顺序示意图">具体的顺序示意图</h3>
+<ol type="1">
+<li><strong>客户端</strong> →
+<strong>Nginx</strong>（反向代理或静态资源返回）</li>
+<li><strong>Nginx</strong> → <strong>Spring
+Boot</strong>（若为动态页面请求）</li>
+<li><strong>Spring Boot</strong> → <strong>Redis
+缓存</strong>（查找缓存数据）</li>
+<li><strong>Redis</strong>（若缓存命中直接返回）或 <strong>Thymeleaf
+模板渲染</strong>（未命中）</li>
+<li><strong>渲染完成后的 HTML</strong> → <strong>Nginx</strong></li>
+<li><strong>Nginx</strong> → <strong>客户端</strong></li>
+</ol>
+<h3 id="流程总结">流程总结</h3>
+<p>通过这一流程，Redis 缓存显著减少了对数据库的访问次数，Nginx
+反向代理则分担了静态资源的请求，Thymeleaf
+动态渲染负责生成未缓存的页面。这种协同处理方式使服务器响应更高效，同时降低了数据库和服务器的压力。</p>
+</blockquote>
+<h1 id="测试">测试</h1>
+<p>我是如何测试网站的并发数量的？</p>
+<p>采用 并发压力测试工具：<a target="_blank" rel="noopener" href="https://blog.csdn.net/carefree2005/article/details/120039778">Linux之压测工具Siege安装和使用_siege压测-CSDN博客</a></p>
+<p>性能测试还可以使用 <code>JMeter</code></p>
+<h1 id="安全性">安全性</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41432730/article/details/122023212">Nginx
+限流方式（速率限流、并发限流及黑白名单配置）_nginx
+限流类型-CSDN博客</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag"><i class="fa fa-tag"></i> 面试</a>
+              <a href="/tags/Nginx/" rel="tag"><i class="fa fa-tag"></i> Nginx</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/10/27/Java-%E9%9D%A2%E8%AF%95-%E6%95%B0%E6%8D%AE%E5%BA%93-3-Redis/" rel="prev" title="Java-面试-数据库-3-Redis">
+                  <i class="fa fa-angle-left"></i> Java-面试-数据库-3-Redis
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/10/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E9%9D%A2%E8%AF%95-OS-1/" rel="next" title="计算机基础-面试-OS-1">
+                  计算机基础-面试-OS-1 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Duan Yao</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">46k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:46</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","single_dollars":true,"cjk_width":0.9,"normal_width":0.6,"append_css":true,"every_page":false,"packages":null,"extension_options":{},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+</body>
+</html>
